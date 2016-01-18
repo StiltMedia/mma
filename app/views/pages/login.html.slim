@@ -1,0 +1,79 @@
+doctype html
+html lang="en" 
+  head
+    meta charset="utf-8" /
+    meta content="" name="keywords" /
+    meta content="" name="description" /
+    meta content=("pebas - http://themeforest.net/user/pebas/") name="author" /
+    meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" /
+    /! Title
+    title Meat Market App
+    /! Favicon
+    link href=asset_path("fav.ico") rel=("shortcut icon") type="image/x-icon" /
+    /! Google Fonts
+    link href="http://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400italic,700italic,400,700" rel="stylesheet" type="text/css" /
+    /! Bootstrap
+    link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" /
+    /! Bootstrap
+    link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" /
+    /! Calendar
+    link href=asset_path("zabuto_calendar.min.css") rel="stylesheet" /
+    /! Template
+    link href=asset_path("style.css") rel="stylesheet" /
+    /! HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    /! WARNING: Respond.js doesn't work if you view the page via file://
+    /![if lt IE 9]
+      | <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script
+      | <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script
+  body
+    /! main site
+    section.screen
+      .container
+        /! logo
+        .logo-screen
+          .row
+            .col-md-12
+              img.img-responsive alt="logo" src=asset_path("logo.svg") /
+        /! .logo
+        /! form login
+        .form-login
+          .row
+            .col-md-12
+              .input-group
+                i
+                  img alt="icon_login" src=asset_path("i_login.png") /
+                input.form-control type="text" /
+            .col-md-12
+              .input-group
+                i
+                  img alt="icon_login" src=asset_path("i_pass.png") /
+                input.form-control type="password" /
+                a.link.link-small href="#"  Forgot Password?
+        /! .form login
+        /! log in button
+        .button
+          .row
+            .col-md-12
+              a.btn.full href="account_home.html"  LOG IN
+        /! .log in button
+        /! sign up link
+        .signup-link.text-center
+          .row
+            .col-md-12
+              a.link href="signup_protected.html" 
+                | SIGN UP NOW
+                i
+                  img alt="icon_signup" src=asset_path("i_key.png") /
+            .col-md-12
+              a.link.link-small href="#"  Need Help?
+        /! sign up link
+    /! .main site
+    /! jQuery (necessary for Bootstrap's JavaScript plugins)
+    script src="//code.jquery.com/jquery-2.2.0.js"
+    /! Include all compiled plugins (below), or include individual files as needed
+    script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
+    /! Include all template js plugins
+    script src=asset_path("zabuto_calendar.min.js")
+    /! Include all template custom js
+    script src=asset_path("custom.js")
+

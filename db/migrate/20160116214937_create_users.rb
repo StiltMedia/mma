@@ -9,4 +9,8 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
+
+  def data
+  
+  end
 end
