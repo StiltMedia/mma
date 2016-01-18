@@ -45,3 +45,4 @@ end
 
 gem "pg"
 gem "railroady"
+gem "rails-erd"
