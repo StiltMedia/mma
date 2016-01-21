@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'pages/login'
 
-  get 'pages/home'
+  get 'pages/account_home'
+  get 'pages/restaurants'
+  get 'pages/coming_soon'
 
   root 'pages#landing'
 

@@ -6,4 +6,10 @@ class CreateRestaurants < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
+
+  def data
+    Restaurant.create!(name: "Miami Beach")
+    Restaurant.create!(name: "San Juan")
+    Restaurant.create!(name: "Palm Beach")
+  end
 end
