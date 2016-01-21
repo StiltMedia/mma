@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ttcomment.user %>
+</p>
+
+<p>
+  <strong>Ttcomment:</strong>
+  <%= @ttcomment.ttcomment %>
+</p>
+
+<p>
+  <strong>Thinktank:</strong>
+  <%= @ttcomment.thinktank %>
+</p>
+
+<%= link_to 'Edit', edit_ttcomment_path(@ttcomment) %> |
+<%= link_to 'Back', ttcomments_path %>

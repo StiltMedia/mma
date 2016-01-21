@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ttcomments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Ttcomment</th>
+      <th>Thinktank</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ttcomments.each do |ttcomment| %>
+      <tr>
+        <td><%= ttcomment.user %></td>
+        <td><%= ttcomment.ttcomment %></td>
+        <td><%= ttcomment.thinktank %></td>
+        <td><%= link_to 'Show', ttcomment %></td>
+        <td><%= link_to 'Edit', edit_ttcomment_path(ttcomment) %></td>
+        <td><%= link_to 'Destroy', ttcomment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ttcomment', new_ttcomment_path %>

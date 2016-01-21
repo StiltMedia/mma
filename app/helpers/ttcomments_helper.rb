@@ -1,0 +1,2 @@
+module TtcommentsHelper
+end

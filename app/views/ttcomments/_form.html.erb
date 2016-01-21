@@ -1,0 +1,29 @@
+<%= form_for(@ttcomment) do |f| %>
+  <% if @ttcomment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ttcomment.errors.count, "error") %> prohibited this ttcomment from being saved:</h2>
+
+      <ul>
+      <% @ttcomment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :ttcomment %><br>
+    <%= f.text_area :ttcomment %>
+  </div>
+  <div class="field">
+    <%= f.label :thinktank_id %><br>
+    <%= f.text_field :thinktank_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

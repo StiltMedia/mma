@@ -138,38 +138,70 @@
                             <div class="post-comments">
                                 <div class="post-title">
                                     <h6>COMMENTS</h6>
-
                                     <div class="comments">
+
+
+
+
+
+
+<% @ttcomment = Ttcomment.new %>
+<%= form_for(@ttcomment) do |f| %>
+
+                                        
                                         <div class="media input-group">
                                             <div class="media-left">
-                                                <img src="img/profile/p-image.png" alt="profile_image">
+                                                <img src="<%=url_for(:controller => "users", :action => "show_picture", :id => current_user.id)%>" alt="profile_image" class="commenter-image">
                                             </div>
                                             <div class="media-body">
-                                                <input type="text" class="form-control"
+                                              <input style="margin-bottom: 10px" type="text" name="ttcomment[ttcomment]" id="ttcomment_ttcomment" class="form-control"
                                                        placeholder="Leave a Comment...">
+                                                <%= f.submit "Add Comment" %>
+
                                             </div>
                                         </div>
 
+
+
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :thinktank_id, :value => @thinktank.id %>
+    
+  <% if @ttcomment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ttcomment.errors.count, "error") %> prohibited this ttcomment from being saved:</h2>
+
+      <ul>
+      <% @ttcomment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<% end %>
+                                        <% @thinktank.ttcomments.order(updated_at: :desc).each do |ttcomment| %>
                                         <div class="media">
                                             <div class="media-left">
                                                 <a href="#">
-                                                    <img class="media-object img-circle" src="img/profile/p-image.png"
-                                                         alt="profile_image">
+                                                    <img class="media-object img-circle commenter-image" src="<%=url_for(:controller => "users", :action => "show_picture", :id => ttcomment.user.id)%>" alt="profile">
+                                                    <!--<img class="media-object img-circle" src="img/profile/p-image.png"
+                                                         alt="profile_image">-->
                                                 </a>
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="media-heading">NAME HERE</h6>
+                                                <h6 class="media-heading"><%= ttcomment.user.email%></h6>
 
                                                 <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis nostrud exercitation.
+                                                    <%= ttcomment.ttcomment %>
                                                 </p>
 
 
                                             </div>
                                         </div>
+                                        <%end%>
+
+
 
                                     </div>
 

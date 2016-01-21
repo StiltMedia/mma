@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ttcomments
   devise_for :users, :path => '', :path_names => {:sign_in => '/pages/login', :sign_out => 'logout'}, :controllers => {:registrations => "registrations"}
   get 'pages/login'
 
