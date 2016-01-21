@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="" name="keywords" />
+<meta content="" name="description" />
+<meta<% _slim_codeattributes1 = ("pebas - http://themeforest.net/user/pebas/"); if _slim_codeattributes1; if _slim_codeattributes1 == true %> content=""<% else %> content="<%= ::Temple::Utils.escape_html((_slim_codeattributes1)) %>"<% end; end %> name="author" />
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+<!--Title-->
+<title>Meat Market App</title>
+<!--Favicon-->
+<link<% _slim_codeattributes2 = asset_path("fav.ico"); if _slim_codeattributes2; if _slim_codeattributes2 == true %> href=""<% else %> href="<%= ::Temple::Utils.escape_html((_slim_codeattributes2)) %>"<% end; end; _slim_codeattributes3 = ("shortcut icon"); if _slim_codeattributes3; if _slim_codeattributes3 == true %> rel=""<% else %> rel="<%= ::Temple::Utils.escape_html((_slim_codeattributes3)) %>"<% end; end %> type="image/x-icon" />
+<!--Google Fonts-->
+<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400italic,700italic,400,700" rel="stylesheet" type="text/css" />
+<!--Bootstrap-->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<!--Bootstrap-->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<!--Calendar-->
+<link<% _slim_codeattributes4 = asset_path("zabuto_calendar.min.css"); if _slim_codeattributes4; if _slim_codeattributes4 == true %> href=""<% else %> href="<%= ::Temple::Utils.escape_html((_slim_codeattributes4)) %>"<% end; end %> rel="stylesheet" />
+<!--Template-->
+<link<% _slim_codeattributes5 = asset_path("style.css"); if _slim_codeattributes5; if _slim_codeattributes5 == true %> href=""<% else %> href="<%= ::Temple::Utils.escape_html((_slim_codeattributes5)) %>"<% end; end %> rel="stylesheet" />
+<!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+<!--WARNING: Respond.js doesn't work if you view the page via file://-->
+<!--[if lt IE 9]
+
+| <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script
+
+| <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script-->
+</head><body>
+
+
+
+
+
+<!--main site-->
+<section class="screen">
+<div class="container">
+<!--logo-->
+<div class="logo-screen">
+<div class="row">
+<div class="col-md-12">
+<img alt="logo" class="img-responsive"<% _slim_codeattributes6 = asset_path("logo.svg"); if _slim_codeattributes6; if _slim_codeattributes6 == true %> src=""<% else %> src="<%= ::Temple::Utils.escape_html((_slim_codeattributes6)) %>"<% end; end %> />
+</div></div></div><!--.logo-->
+<p class="notice"><%= ::Temple::Utils.escape_html((notice)) %>
+</p><p class="alert"><%= ::Temple::Utils.escape_html((alert)) %>
+</p>
+
+<!--form login-->
+
+<%= form_for("user", :url => user_session_path) do |f| %>
+
+
+
+
+<div class="form-login">
+<div class="row">
+<div class="col-md-12">
+<div class="input-group">
+<i>
+<img alt="icon_login"<% _slim_codeattributes7 = asset_path("i_login.png"); if _slim_codeattributes7; if _slim_codeattributes7 == true %> src=""<% else %> src="<%= ::Temple::Utils.escape_html((_slim_codeattributes7)) %>"<% end; end %> />
+</i>
+    <%= f.text_field :email, :class => "form-control" %>
+</div></div><div class="col-md-12">
+<div class="input-group">
+<i>
+<img alt="icon_login"<% _slim_codeattributes8 = asset_path("i_pass.png"); if _slim_codeattributes8; if _slim_codeattributes8 == true %> src=""<% else %> src="<%= ::Temple::Utils.escape_html((_slim_codeattributes8)) %>"<% end; end %> />
+</i>
+<%= f.password_field :password, :class => "form-control" %>
+<%= link_to "Forgot Password?", new_password_path('user'), :class => "link link-small" %>
+</div></div></div></div><!--.form login-->
+
+
+
+
+
+<!--log in button-->
+<div class="button">
+<div class="row">
+<div class="col-md-12">
+<%= f.submit 'LOG IN', :class => 'btn full' %>
+</div></div></div><!--.log in button-->
+<% end %> 
+<!--sign up link-->
+<div class="signup-link text-center">
+<div class="row">
+<div class="col-md-12">
+<a class="link" href="signup_protected.html">
+SIGN UP NOW
+<i>
+<img alt="icon_signup"<% _slim_codeattributes9 = asset_path("i_key.png"); if _slim_codeattributes9; if _slim_codeattributes9 == true %> src=""<% else %> src="<%= ::Temple::Utils.escape_html((_slim_codeattributes9)) %>"<% end; end %> />
+</i></a></div><div class="col-md-12">
+<a class="link link-small" href="/pages/coming_soon"> Need Help?</a>
+</div></div></div><!--sign up link-->
+</div></section><!--.main site-->
+<!--jQuery (necessary for Bootstrap's JavaScript plugins)-->
+<script src="//code.jquery.com/jquery-2.2.0.js">
+</script><!--Include all compiled plugins (below), or include individual files as needed-->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
+</script><!--Include all template js plugins-->
+<script<% _slim_codeattributes10 = asset_path("zabuto_calendar.min.js"); if _slim_codeattributes10; if _slim_codeattributes10 == true %> src=""<% else %> src="<%= ::Temple::Utils.escape_html((_slim_codeattributes10)) %>"<% end; end %>>
+</script><!--Include all template custom js-->
+<script<% _slim_codeattributes11 = asset_path("custom.js"); if _slim_codeattributes11; if _slim_codeattributes11 == true %> src=""<% else %> src="<%= ::Temple::Utils.escape_html((_slim_codeattributes11)) %>"<% end; end %>>
+</script></body></html>

@@ -69,7 +69,9 @@
     <!-- think tank inside post -->
     <div class="screen-inner">
         <div class="container">
-
+          <% if notice.present? || alert.present? %>
+          <p class="notice"><%= notice %> <%= alert %> </p>
+          <% end %>
             <!-- account home -->
             <div class="account-home">
 
