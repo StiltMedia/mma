@@ -76,6 +76,7 @@
         <div class="container">
 
 
+
             <!-- log in button -->
             <div class="button">
                 <div class="row">
@@ -87,6 +88,9 @@
                 </div>
             </div>
             <!-- .log in button -->
+
+
+
 
             <!-- logo -->
             <div class="logo-screen text-center edit-image">
@@ -101,31 +105,50 @@
             </div>
             <!-- .logo -->
 
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+          <% if notice.present? || alert.present? %>
+          <p class="notice"><%= notice %> <%= alert %> </p>
+          <% end %>
+
+
             <!-- form login-->
             <div class="form-login signup">
                 <div class="row">
 
                     <div class="col-md-12">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="NAME">
+                            <%= f.text_field :first_name, :class => 'form-control', :placeholder => 'NAME' %>
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="LAST NAME">
+                            <%= f.text_field :last_name, :class => 'form-control', :placeholder => 'LAST NAME' %>
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="input-group">
-                            <input type="email" class="form-control" placeholder="EMAIL">
+                            <%= f.text_field :email, :class => 'form-control', :placeholder => 'EMAIL' %>
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="input-group">
-                            <input type="password" class="form-control" placeholder="CHANGE PASSWORD">
+                            <%= f.text_field :password, :class => 'form-control', :placeholder => 'CHANGE PASSWORD' %>
                         </div>
                     </div>
 
@@ -138,7 +161,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="input-group">
-                            <input class="btn full no-hover" type="submit" value="SAVE" placeholder="SUBMIT">
+                            <%= f.submit 'SAVE', :class => 'btn full no-hover' %>
                         </div>
                     </div>
                 </div>
@@ -147,7 +170,7 @@
 
         </div>
     </div>
-
+<% end %>
     <!-- footer nav -->
     <footer class="footer-nav">
         <nav>

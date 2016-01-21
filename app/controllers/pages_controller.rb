@@ -15,5 +15,6 @@ class PagesController < ApplicationController
   end
 
   def edit_profile
+    @user = User.find(current_user.id)
   end
 end
