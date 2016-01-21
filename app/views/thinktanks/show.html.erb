@@ -1,5 +1,231 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
 
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="keywords" content=""/>
+    <meta name="description" content="">
+    <meta name="author" content="pebas - http://themeforest.net/user/pebas/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    <title>Meat Market App</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/fav.ico">
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400italic,700italic,400,700'
+          rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap -->
+    <link href="<%=asset_path("font-awesome.min.css")%>" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="<%=asset_path("bootstrap.min.css")%>" rel="stylesheet">
+
+    <!-- Calendar -->
+    <link href="<%=asset_path("zabuto_calendar.min.css")%>" rel="stylesheet">
+
+    <!-- Template -->
+    <link href="<%=asset_path("style.css")%>" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+
+</head>
+
+<body>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<!-- main site -->
+<section class="think-tank no-padding">
+
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header -->
+        <header class="header-top">
+
+            <div class="go-back">
+                <a class="link link-big" href="/thinktanks">
+                    <i><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_angle"></i>
+
+                    <h3 class="hidden">
+                        TITLE OF POST HERE
+                    </h3>
+                </a>
+            </div>
+
+            <div class="profile">
+                <a class="link link-profile" href="/pages/edit_profile"><img class="img-circle" src="<%=url_for(:controller => "users", :action => "show_picture", :id => current_user.id)%>" alt="profile"></a>
+            </div>
+
+        </header>
+        <!-- .header -->
+    </div>
+    <!-- .header container -->
+
+    <!-- think tank inside post -->
+    <div class="screen-inner">
+        <div class="container">
+
+            <!-- post inside -->
+            <div class="post-inside">
+
+                <!-- post image -->
+                <div class="post-image">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="<%=url_for(:controller => "thinktanks", :action => "show_picture", :id => @thinktank.id)%>" alt="post_image">
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- .post image -->
+
+                <!-- post text -->
+                <div class="text-container">
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="post-title">
+                                <h6><%= @thinktank.title.upcase %></h6>
+                            </div>
+
+                            <div class="post-meta">
+                                <span class="date"><%= @thinktank.updated_at.to_s(:long)%></span>
+                                |
+                                <span class="author">Author: <%= @thinktank.user.email %></span>
+                            </div>
+
+                            <div class="post-content">
+                                <pre style="background-color: transparent; border: 0px"><%= @thinktank.thinktank %></pre>
+                                <!--
+                                <ul class="list-unstyled">
+                                    <li>Ingredients:</li>
+                                    <li>1 Lorem Ipsum</li>
+                                    <li>5 Lorem</li>
+                                    <li>1/2 Lorem Imp</li>
+                                </ul>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.
+                                </p>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.
+                                </p>
+                                -->
+                            </div>
+
+                            <div class="post-comments">
+                                <div class="post-title">
+                                    <h6>COMMENTS</h6>
+
+                                    <div class="comments">
+                                        <div class="media input-group">
+                                            <div class="media-left">
+                                                <img src="img/profile/p-image.png" alt="profile_image">
+                                            </div>
+                                            <div class="media-body">
+                                                <input type="text" class="form-control"
+                                                       placeholder="Leave a Comment...">
+                                            </div>
+                                        </div>
+
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <a href="#">
+                                                    <img class="media-object img-circle" src="img/profile/p-image.png"
+                                                         alt="profile_image">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">NAME HERE</h6>
+
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                    eiusmod
+                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                    veniam, quis nostrud exercitation.
+                                                </p>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- .post text -->
+
+            </div>
+            <!-- .post inside-->
+
+        </div>
+    </div>
+    <!-- .think tank inside post -->
+
+    <!-- footer nav -->
+    <footer class="footer-nav">
+        <nav>
+            <ul class="list-unstyled">
+                <li><a href="/"><img src="<%=asset_path("icons/i_home.png")%>" alt="icon_home"></a></li>
+                <li><a href="/thinktanks"><img src="<%=asset_path("icons/i_comment.png")%>" alt="icon_comment"></a></li>
+                <li><a href="/pages/restaurants"><img src="<%=asset_path("icons/i_restaurant.png")%>" alt="icon_restaurant"></a></li>
+                <li><a href="/pages/coming_soon"><img src="<%=asset_path("icons/i_search_footer.png")%>" alt="icon_search"></a></li>
+            </ul>
+        </nav>
+    </footer>
+    <!-- footer nav -->
+
+</section>
+<!-- .main site -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="<%=asset_path("jquery-1.11.1.min.js")%></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="<%=asset_path("bootstrap.min.js")%>"></script>
+<!-- Include all template js plugins -->
+<script src="<%=asset_path("zabuto_calendar.min.js")%>"></script>
+
+<!-- Include all template custom js -->
+<script src="<%=asset_path("custom.js")%>"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!--
 <p>
   <strong>Title:</strong>
   <%= @thinktank.title %>
@@ -22,3 +248,4 @@
 
 <%= link_to 'Edit', edit_thinktank_path(@thinktank) %> |
 <%= link_to 'Back', thinktanks_path %>
+-->

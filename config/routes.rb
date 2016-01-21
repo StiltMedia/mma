@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :thinktanks
   devise_for :users, :path => '', :path_names => {:sign_in => '/pages/login', :sign_out => 'logout'}, :controllers => {:registrations => "registrations"}
   get 'pages/login'
 
@@ -15,6 +14,12 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :thinktanks do
+    collection do
+      get 'show_picture'
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

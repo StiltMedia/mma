@@ -100,7 +100,7 @@
         <div class="post">
 
             <div class="post-title">
-                <h6><a href="recap_inside_post.html"><%=thinktank.title%></a></h6>
+                <h6><%= link_to thinktank.title, thinktank %></h6>
 
                 <div class="post-meta">
                     <span class="author">Author: <%= thinktank.user.email%></span>

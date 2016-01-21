@@ -51,7 +51,7 @@ class AddDeviseToUsers < ActiveRecord::Migration
     users = []
     emails = [ "hawkishtester@gmail.com", "sean@example.net" ]
     emails.each do |email|
-      User.new(email: email, password: "password").save(:validate => false)
+      User.new(email: email, password: "supersonic123").save(:validate => false)
     end
     #users << User.create!(email: "hawkishtester@gmail.com", password: "password")
     #users << User.create!(email: "sean@example.net", password: "password")

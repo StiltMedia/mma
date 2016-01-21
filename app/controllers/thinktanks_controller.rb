@@ -10,6 +10,7 @@ class ThinktanksController < ApplicationController
   # GET /thinktanks/1
   # GET /thinktanks/1.json
   def show
+    @thinktank = Thinktank.find(params[:id])
   end
 
   # GET /thinktanks/new
@@ -60,6 +61,13 @@ class ThinktanksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def show_picture
+    @thinktank = Thinktank.find(params[:id])
+    @thinktank.picture = (open('app/assets/images/thinktank-1.jpg', 'rb') { |f| f.read }) if ! @thinktank.picture
+    send_data @thinktank.picture, :type => 'image/jpg',:disposition => 'inline'
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
