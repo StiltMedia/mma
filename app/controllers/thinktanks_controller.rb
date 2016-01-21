@@ -11,6 +11,7 @@ class ThinktanksController < ApplicationController
   # GET /thinktanks/1.json
   def show
     @thinktank = Thinktank.find(params[:id])
+    @is_owner = true if @thinktank.user.id = current_user.id
   end
 
   # GET /thinktanks/new
@@ -57,7 +58,7 @@ class ThinktanksController < ApplicationController
   def destroy
     @thinktank.destroy
     respond_to do |format|
-      format.html { redirect_to thinktanks_url, notice: 'Thinktank was successfully destroyed.' }
+      format.html { redirect_to thinktanks_url, notice: 'Deleted.' }
       format.json { head :no_content }
     end
   end

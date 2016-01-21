@@ -74,7 +74,7 @@
     <!-- .header container -->
 
     <!-- think tank inside post -->
-    <div class="screen-inner">
+    <div class="screen-inner thinktank-show-page">
         <div class="container">
 
             <!-- post inside -->
@@ -211,12 +211,22 @@
                         </div>
                     </div>
                 </div>
+ 
                 <!-- .post text -->
 
             </div>
             <!-- .post inside-->
-
         </div>
+    <br>
+    <div class="button">
+         <div class="row">
+             <div class="col-md-12">
+                 <%= link_to 'DELETE', @thinktank, method: :delete, class: "btn full red-delete", data: { confirm: 'Are you sure?' } %>
+             </div>
+         </div>
+     </div>
+
+
     </div>
     <!-- .think tank inside post -->
 
