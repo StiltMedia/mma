@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get 'pages/edit_profile'
 
   root 'pages#landing'
-  resources :users
+  resources :users do
+    collection do
+      get 'show_picture'
+    end
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

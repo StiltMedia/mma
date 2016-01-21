@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+
+$("document").ready(function(){
+    $("#file-upload-1").on("change",function() {
+      console.log("change detected");
+      $(this).closest("form").submit();
+    });
+});

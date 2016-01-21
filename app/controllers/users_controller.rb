@@ -40,6 +40,13 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    if params[:user][:picture].present?
+      @user.picture = params[:user][:picture].read
+      @user.save
+      redirect_to pages_edit_profile_path and return
+    end
+
+
     respond_to do |format|
       if @user.update(user_params)
         sign_in(@user, :bypass => true)
@@ -61,6 +68,12 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def show_picture
+    @user = User.find(params[:id])
+    @user.picture = (open('app/assets/images/chef-2.jpg', 'rb') { |f| f.read })
+    send_data @user.picture, :type => 'image/jpg',:disposition => 'inline'
   end
 
   private

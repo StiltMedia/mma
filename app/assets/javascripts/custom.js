@@ -71,9 +71,9 @@ jQuery(document).ready(function ($) {
     });*/
 
     <!-- initialize the calendar on ready -->
-    $("#calendar").zabuto_calendar({
-        today: true
-    });
+    //$("#calendar").zabuto_calendar({
+    //    today: true
+    //});
 
     // hide footer on input focus
     $('input, textarea').blur(function () {
