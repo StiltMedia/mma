@@ -57,8 +57,7 @@
             </div>
 
             <div class="profile">
-                <a class="link link-profile" href="/pages/edit_profile"><img class="img-circle" src="<%= asset_path("profile/p-image.png")%>"
-                                                           alt="profile"></a>
+                <a class="link link-profile" href="/pages/edit_profile"><img class="img-circle" src="<%=url_for(:controller => "users", :action => "show_picture", :id => User.first.id)%>" alt="profile"></a>
             </div>
 
         </header>
