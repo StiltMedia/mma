@@ -63,7 +63,7 @@
             </div>
 
             <div class="profile">
-                <a class="link link-profile" href="/pages/edit_profile"><img class="img-circle" src="<%=url_for(:controller => "users", :action => "show_picture", :id => User.first.id)%>"
+                <a class="link link-profile" href="/pages/edit_profile"><img class="img-circle" src="<%=url_for(:controller => "users", :action => "show_picture", :id => current_user.id)%>"
                                                            alt="profile"></a>
             </div>
 

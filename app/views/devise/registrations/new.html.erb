@@ -1,29 +1,166 @@
-<h2>Sign up</h2>
+<!DOCTYPE html>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<html lang="en">
+<head>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <meta charset="utf-8">
+    <meta name="keywords" content=""/>
+    <meta name="description" content="">
+    <meta name="author" content="pebas - http://themeforest.net/user/pebas/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <!-- Title -->
+    <title>Meat Market App</title>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/fav.ico">
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400italic,700italic,400,700'
+          rel='stylesheet' type='text/css'>
 
-<%= render "devise/shared/links" %>
+    <!-- Bootstrap -->
+    <link href="<%=asset_path("font-awesome.min.css")%>" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="<%=asset_path("bootstrap.min.css")%>" rel="stylesheet">
+
+    <!-- Calendar -->
+    <link href="<%=asset_path("zabuto_calendar.min.css")%>" rel="stylesheet">
+
+    <!-- Template -->
+    <link href="<%=asset_path("style.css")%>" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+
+</head>
+
+<body>
+
+<!-- main site -->
+<section class="screen">
+    <div class="container">
+
+        <!-- logo -->
+        <div class="logo-screen">
+            <div class="row">
+                <div class="col-md-12">
+                    <img class="img-responsive" src="<%=asset_path("logo.svg")%>" alt="logo">
+                </div>
+            </div>
+        </div>
+        <!-- .logo -->
+
+        <!-- form login-->
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+        <div class="form-login signup">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <%= f.text_field :secret_code, :class => "form-control", :placeholder => "SECRET CODE (PROVIDED BY SEAN)"  %>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <%= f.text_field :first_name, :class => "form-control", :placeholder => "NAME"  %>
+
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <%= f.text_field :last_name, :class => "form-control", :placeholder => "LAST NAME"  %>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <%= f.email_field :email, :class => "form-control", :placeholder => "EMAIL"  %>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <%= f.password_field :password, :class => "form-control", :placeholder => "PASSWORD" %>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "VERIFY PASSWORD" %>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- .form login -->
+
+
+        <!-- log in button -->
+        <div class="button">
+            <div class="row">
+                <div class="col-md-12">
+                    <%= f.submit "SIGN UP", :class => "btn full" %>
+                </div>
+            </div>
+        </div>
+        <!-- .log in button -->
+        <% end %>
+
+        <!-- sign up link -->
+        <div class="signup-link text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="link" href="index.html">ALREADY HAVE AN ACCOUNT?</a>
+                </div>
+                <div class="col-md-12">
+                    <a class="link link-small" href="#">Need Help?</a>
+                </div>
+            </div>
+        </div>
+        <!-- sign up link -->
+
+    </div>
+</section>
+<!-- .main site -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="<%=asset_path("jquery-1.11.1.min.js")%></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="<%=asset_path("bootstrap.min.js")%>"></script>
+<!-- Include all template js plugins -->
+<script src="<%=asset_path("zabuto_calendar.min.js")%>"></script>
+
+<!-- Include all template custom js -->
+<script src="<%=asset_path("custom.js")%>"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

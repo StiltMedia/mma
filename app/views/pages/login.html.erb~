@@ -28,6 +28,11 @@
 
 | <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script-->
 </head><body>
+
+
+
+
+
 <!--main site-->
 <section class="screen">
 <div class="container">
@@ -39,27 +44,43 @@
 </div></div></div><!--.logo-->
 <p class="notice"><%= ::Temple::Utils.escape_html((notice)) %>
 </p><p class="alert"><%= ::Temple::Utils.escape_html((alert)) %>
-</p><!--form login-->
+</p>
+
+<!--form login-->
+
+<%= form_for("user", :url => user_session_path) do |f| %>
+
+
+
+
 <div class="form-login">
 <div class="row">
 <div class="col-md-12">
 <div class="input-group">
 <i>
 <img alt="icon_login"<% _slim_codeattributes7 = asset_path("i_login.png"); if _slim_codeattributes7; if _slim_codeattributes7 == true %> src=""<% else %> src="<%= ::Temple::Utils.escape_html((_slim_codeattributes7)) %>"<% end; end %> />
-</i><input class="form-control" type="text" />
+</i>
+    <%= f.text_field :email, :class => "form-control" %>
 </div></div><div class="col-md-12">
 <div class="input-group">
 <i>
 <img alt="icon_login"<% _slim_codeattributes8 = asset_path("i_pass.png"); if _slim_codeattributes8; if _slim_codeattributes8 == true %> src=""<% else %> src="<%= ::Temple::Utils.escape_html((_slim_codeattributes8)) %>"<% end; end %> />
-</i><input class="form-control" type="password" />
+</i>
+<%= f.password_field :password, :class => "form-control" %>
 <a class="link link-small" href="#"> Forgot Password?</a>
 </div></div></div></div><!--.form login-->
+
+
+
+
+
 <!--log in button-->
 <div class="button">
 <div class="row">
 <div class="col-md-12">
-<a class="btn full" href="account_home.html"> LOG IN</a>
+<%= f.submit 'LOG IN', :class => 'btn full' %>
 </div></div></div><!--.log in button-->
+<% end %> 
 <!--sign up link-->
 <div class="signup-link text-center">
 <div class="row">

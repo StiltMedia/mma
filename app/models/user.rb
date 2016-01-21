@@ -3,4 +3,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates :secret_code, on: :create, format: { with: /\Asupersonic123\z/, message: "not recognized" }
 end

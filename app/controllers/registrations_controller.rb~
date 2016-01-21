@@ -1,0 +1,14 @@
+class RegistrationsController < Devise::RegistrationsController
+  def new
+    byebug
+  end
+
+  def create
+    byebug
+  end
+
+  def update
+    byebug
+    super
+  end
+end 
