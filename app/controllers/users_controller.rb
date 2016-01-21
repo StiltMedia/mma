@@ -45,14 +45,17 @@ class UsersController < ApplicationController
       @user.save
       redirect_to pages_edit_profile_path and return
     end
-
-
+    users_params = user_params.except(:password) if params[:user][:password].blank?
+    if params[:user][:password].blank?
+      retval = @user.update(user_params.except(:password))
+    else
+      retval = @user.update(user_params)
+    end
     respond_to do |format|
-      if @user.update(user_params)
+      if retval
         sign_in(@user, :bypass => true)
         format.html { redirect_to pages_edit_profile_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
-
       else
         format.html { redirect_to pages_edit_profile_path, notice: 'Unprocessable entity' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
