@@ -75,7 +75,7 @@ class UsersController < ApplicationController
 
   def show_picture
     @user = User.find(params[:id])
-    @user.picture = (open('app/assets/images/chef-2.jpg', 'rb') { |f| f.read })
+    @user.picture = (open('app/assets/images/chef-2.jpg', 'rb') { |f| f.read }) if ! @user.picture
     send_data @user.picture, :type => 'image/jpg',:disposition => 'inline'
   end
 
