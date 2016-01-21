@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [:account_home]
+  before_action :authenticate_user!, only: [:account_home, :edit_profile]
   def landing
     if user_signed_in?
       redirect_to pages_account_home_path
@@ -12,5 +12,8 @@ class PagesController < ApplicationController
   end
 
   def account_home
+  end
+
+  def edit_profile
   end
 end

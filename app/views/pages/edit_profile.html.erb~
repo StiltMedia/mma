@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="keywords" content=""/>
+    <meta name="description" content="">
+    <meta name="author" content="pebas - http://themeforest.net/user/pebas/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    <title>Meat Market App</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/fav.ico">
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400italic,700italic,400,700'
+          rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Calendar -->
+    <link href="css/zabuto_calendar.min.css" rel="stylesheet">
+
+    <!-- Template -->
+    <link href="style.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+
+</head>
+
+<body>
+
+<!-- main site -->
+<section class="screen no-padding edit">
+
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header -->
+        <header class="header-top">
+
+            <div class="go-back">
+                <a class="link link-big" href="#">
+                    <i><img src="img/icons/i_angle_left.png" alt="icon_angle"></i>
+
+                    <h3>
+                        EDIT PROFILE
+                    </h3>
+                </a>
+            </div>
+
+            <div class="profile">
+                <a class="link link-profile" href="#"><img class="img-circle" src="img/profile/p-image.png"
+                                                           alt="profile"></a>
+            </div>
+
+        </header>
+        <!-- .header -->
+    </div>
+    <!-- .header container -->
+
+    <div class="screen-inner">
+        <div class="container">
+
+            <!-- logo -->
+            <div class="logo-screen text-center edit-image">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input class="hidden image-upload" type="file" accept="image/*">
+                        <img class="img-responsive edit-profile" src="img/profile/p-image_big.png" alt="profile_image">
+                        <a href="#">EDIT IMAGE</a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- .logo -->
+
+            <!-- form login-->
+            <div class="form-login signup">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="NAME">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="LAST NAME">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="EMAIL">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="password" class="form-control" placeholder="CHANGE PASSWORD">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- .form login -->
+
+            <!-- log in button -->
+            <div class="button">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input class="btn full" type="submit" placeholder="SUBMIT">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- .log in button -->
+
+        </div>
+    </div>
+
+    <!-- footer nav -->
+    <footer class="footer-nav">
+        <nav>
+            <ul class="list-unstyled">
+                <li><a href="account_home.html"><img src="img/icons/i_home.png" alt="icon_home"></a></li>
+                <li><a href="think_tank.html"><img src="img/icons/i_comment.png" alt="icon_comment"></a></li>
+                <li><a href="restaurants.html"><img src="img/icons/i_restaurant.png" alt="icon_restaurant"></a></li>
+                <li><a href="#"><img src="img/icons/i_search_footer.png" alt="icon_search"></a></li>
+            </ul>
+        </nav>
+    </footer>
+    <!-- footer nav -->
+
+</section>
+<!-- .main site -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Include all template js plugins -->
+<script src="js/zabuto_calendar.min.js"></script>
+
+<!-- Include all template custom js -->
+<script src="js/custom.js"></script>
+
+</body>
+</html>

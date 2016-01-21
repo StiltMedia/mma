@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   get 'pages/account_home'
   get 'pages/restaurants'
   get 'pages/coming_soon'
+  get 'pages/edit_profile'
 
   root 'pages#landing'
-
+  resources :users
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
