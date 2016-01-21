@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @thinktank.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @thinktank.user %>
+</p>
+
+<p>
+  <strong>Thinktank:</strong>
+  <%= @thinktank.thinktank %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @thinktank.picture %>
+</p>
+
+<%= link_to 'Edit', edit_thinktank_path(@thinktank) %> |
+<%= link_to 'Back', thinktanks_path %>

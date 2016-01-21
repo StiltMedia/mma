@@ -1,0 +1,2 @@
+module ThinktanksHelper
+end
