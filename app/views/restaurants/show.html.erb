@@ -1,0 +1,150 @@
+<!-- main site -->
+<section class="think-tank no-padding">
+
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header -->
+        <header class="header-top">
+
+            <div class="go-back">
+                <a class="link link-big" href="/pages/restaurants">
+                    <i><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_angle"></i>
+
+                    <h3>
+                        <%= @restaurant.name.upcase %> RESTAURANT
+                    </h3>
+                </a>
+            </div>
+
+
+
+            <div class="profile">
+                <a class="link link-profile" href="/pages/edit_profile"><img class="img-circle" src="<%=url_for(:controller => "users", :action => "show_picture", :id => current_user.id)%>"
+                                                           alt="profile"></a>
+            </div>
+
+
+        </header>
+        <!-- .header -->
+    </div>
+    <!-- .header container -->
+
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header lower-->
+        <header class="header-lower no-padding">
+
+            <div class="date">
+                <a href="#"><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_calendar"></a>
+
+                <p>THURSDAY, NOV 11 2015</p>
+                <a href="#"><img src="<%=asset_path("icons/i_angle_right.png")%>" alt="icon_calendar"></a>
+            </div>
+
+            <div class="calendar calendar-special">
+                <a href="#"><img src="<%=asset_path("icons/i_calendar_dark.png")%>" alt="icon_calendar"></a>
+            </div>
+
+            <div class="add add-special">
+                <a href="#"><img src="<%=asset_path("icons/i_plus.png")%>" alt="icon_add"></a>
+            </div>
+
+        </header>
+        <!-- .header lower -->
+    </div>
+    <!-- .header container -->
+
+
+    <!-- specials items -->
+    <div class="specials-items">
+
+        <!-- special item -->
+        <div class="special-item">
+            <div class="special-image">
+                <img src="img/specials/s_image_1.png" alt="special_image">
+            </div>
+            <div class="special-content">
+                <h4>MEATS</h4>
+
+                <p>Lorem ipsum dolor sit amet, anet lorem ocas consectetur adipisicing elit, sed domet lor...</p>
+            </div>
+        </div>
+        <!--.special item -->
+
+        <!-- special item -->
+        <div class="special-item">
+            <div class="special-image">
+                <img src="<%=asset_path("specials/s_image_2.png")%>" alt="special_image">
+            </div>
+            <div class="special-content">
+                <h4>MEATS</h4>
+
+                <p>Lorem ipsum dolor sit amet, anet lorem ocas consectetur adipisicing elit, sed domet lor...</p>
+            </div>
+        </div>
+        <!--.special item -->
+
+        <!-- special item -->
+        <div class="special-item">
+            <div class="special-image">
+                <img src="img/specials/s_image_3.png" alt="special_image">
+            </div>
+            <div class="special-content">
+                <h4>MEATS</h4>
+
+                <p>Lorem ipsum dolor sit amet, anet lorem ocas consectetur adipisicing elit, sed domet lor...</p>
+            </div>
+        </div>
+        <!--.special item -->
+
+        <!-- special item -->
+        <div class="special-item">
+            <div class="special-image">
+                <img src="img/specials/s_image_4.png" alt="special_image">
+            </div>
+            <div class="special-content">
+                <h4>MEATS</h4>
+
+                <p>Lorem ipsum dolor sit amet, anet lorem ocas consectetur adipisicing elit, sed domet lor...</p>
+            </div>
+        </div>
+        <!--.special item -->
+
+    </div>
+    <!-- .specials items -->
+
+
+    <!-- footer top -->
+    <footer class="footer-top">
+
+        <div class="restaurant-buttons">
+            <div class="restaurant-button">
+                <img class="svg" src="<%=asset_path("icons/svg_inventory.svg")%>" alt="icon_recap">
+
+                <h3>RECAP</h3>
+            </div>
+            <div class="restaurant-button active">
+                <img class="svg" src="<%=asset_path("icons/svg_inventory.svg")%>" alt="icon_inventory">
+
+                <h3>INVENTORY</h3>
+            </div>
+        </div>
+
+    </footer>
+    <!-- .footer top -->
+
+    <!-- footer nav -->
+    <footer class="footer-nav">
+        <nav>
+            <ul class="list-unstyled">
+                <li><a href="/"><img src="<%= asset_path("icons/i_home.png")%>" alt="icon_home"></a></li>
+                <li><a href="/thinktanks"><img src="<%=asset_path("icons/i_comment.png")%>" alt="icon_comment"></a></li>
+                <li><a href="/pages/restaurants"><img src="<%=asset_path("icons/i_restaurant.png")%>" alt="icon_restaurant"></a></li>
+                <li><a href="#"><img src="<%=asset_path("icons/i_search_footer.png")%>" alt="icon_search"></a></li>
+            </ul>
+        </nav>
+    </footer>
+    <!-- footer nav -->
+
+</section>
+<!-- .main site -->
