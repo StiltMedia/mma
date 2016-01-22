@@ -1,0 +1,13 @@
+class CreateSpecials < ActiveRecord::Migration
+  def change
+    create_table :specials do |t|
+      t.text :special
+      t.string :title
+      t.binary :picture
+      t.references :restaurant, index: true, foreign_key: true
+      t.timestamp :sdate
+
+      t.timestamps null: false
+    end
+  end
+end

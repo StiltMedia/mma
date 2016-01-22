@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyText
-  photo: MyString
+  special: MyText
+  title: MyString
+  picture: 
   restaurant_id: 
+  sdate: 2016-01-22 00:31:52
 
 two:
-  name: MyString
-  description: MyText
-  photo: MyString
+  special: MyText
+  title: MyString
+  picture: 
   restaurant_id: 
+  sdate: 2016-01-22 00:31:52

@@ -35,18 +35,18 @@
         <header class="header-lower no-padding">
 
             <div class="date">
-                <a href="#"><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_calendar"></a>
+                <a href="/pages/coming_soon"><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_calendar"></a>
 
                 <p>THURSDAY, NOV 11 2015</p>
-                <a href="#"><img src="<%=asset_path("icons/i_angle_right.png")%>" alt="icon_calendar"></a>
+                <a href="/pages/coming_soon"><img src="<%=asset_path("icons/i_angle_right.png")%>" alt="icon_calendar"></a>
             </div>
 
             <div class="calendar calendar-special">
-                <a href="#"><img src="<%=asset_path("icons/i_calendar_dark.png")%>" alt="icon_calendar"></a>
+                <a href="/pages/coming_soon"><img src="<%=asset_path("icons/i_calendar_dark.png")%>" alt="icon_calendar"></a>
             </div>
 
             <div class="add add-special">
-                <a href="#"><img src="<%=asset_path("icons/i_plus.png")%>" alt="icon_add"></a>
+                <a href="/specials/new?rid=<%=@restaurant.id%>"><img src="<%=asset_path("icons/i_plus.png")%>" alt="icon_add"></a>
             </div>
 
         </header>
@@ -58,57 +58,20 @@
     <!-- specials items -->
     <div class="specials-items">
 
+        <% @restaurant.specials.all.each do |special| %>
         <!-- special item -->
         <div class="special-item">
             <div class="special-image">
-                <img src="img/specials/s_image_1.png" alt="special_image">
+                <img src="<%=url_for(:controller => "specials", :action => "show_picture", :id => special.id)%>" alt="special_image">
             </div>
             <div class="special-content">
-                <h4>MEATS</h4>
+                <h4><%= special.title %></h4>
 
-                <p>Lorem ipsum dolor sit amet, anet lorem ocas consectetur adipisicing elit, sed domet lor...</p>
+                <p><%= special.special %></p>
             </div>
         </div>
         <!--.special item -->
-
-        <!-- special item -->
-        <div class="special-item">
-            <div class="special-image">
-                <img src="<%=asset_path("specials/s_image_2.png")%>" alt="special_image">
-            </div>
-            <div class="special-content">
-                <h4>MEATS</h4>
-
-                <p>Lorem ipsum dolor sit amet, anet lorem ocas consectetur adipisicing elit, sed domet lor...</p>
-            </div>
-        </div>
-        <!--.special item -->
-
-        <!-- special item -->
-        <div class="special-item">
-            <div class="special-image">
-                <img src="img/specials/s_image_3.png" alt="special_image">
-            </div>
-            <div class="special-content">
-                <h4>MEATS</h4>
-
-                <p>Lorem ipsum dolor sit amet, anet lorem ocas consectetur adipisicing elit, sed domet lor...</p>
-            </div>
-        </div>
-        <!--.special item -->
-
-        <!-- special item -->
-        <div class="special-item">
-            <div class="special-image">
-                <img src="img/specials/s_image_4.png" alt="special_image">
-            </div>
-            <div class="special-content">
-                <h4>MEATS</h4>
-
-                <p>Lorem ipsum dolor sit amet, anet lorem ocas consectetur adipisicing elit, sed domet lor...</p>
-            </div>
-        </div>
-        <!--.special item -->
+        <% end %>
 
     </div>
     <!-- .specials items -->
@@ -143,7 +106,7 @@
                 <li><a href="/"><img src="<%= asset_path("icons/i_home.png")%>" alt="icon_home"></a></li>
                 <li><a href="/thinktanks"><img src="<%=asset_path("icons/i_comment.png")%>" alt="icon_comment"></a></li>
                 <li><a href="/pages/restaurants"><img src="<%=asset_path("icons/i_restaurant.png")%>" alt="icon_restaurant"></a></li>
-                <li><a href="#"><img src="<%=asset_path("icons/i_search_footer.png")%>" alt="icon_search"></a></li>
+                <li><a href="/pages/coming_soon"><img src="<%=asset_path("icons/i_search_footer.png")%>" alt="icon_search"></a></li>
             </ul>
         </nav>
     </footer>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122065258) do
+ActiveRecord::Schema.define(version: 20160122083152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,18 @@ ActiveRecord::Schema.define(version: 20160122065258) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "specials", force: :cascade do |t|
+    t.text     "special"
+    t.string   "title"
+    t.binary   "picture"
+    t.integer  "restaurant_id"
+    t.datetime "sdate"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "specials", ["restaurant_id"], name: "index_specials_on_restaurant_id", using: :btree
 
   create_table "thinktanks", force: :cascade do |t|
     t.string   "title"
@@ -110,6 +122,7 @@ ActiveRecord::Schema.define(version: 20160122065258) do
   add_foreign_key "rcomments", "users"
   add_foreign_key "recaps", "restaurants"
   add_foreign_key "recaps", "users"
+  add_foreign_key "specials", "restaurants"
   add_foreign_key "thinktanks", "users"
   add_foreign_key "ttcomments", "thinktanks"
   add_foreign_key "ttcomments", "users"

@@ -12,6 +12,13 @@ Rails.application.routes.draw do
   get 'pages/edit_profile'
 
   root 'pages#landing'
+
+  resources :specials do
+    collection do
+      get 'show_picture'
+    end
+  end
+
   resources :users do
     collection do
       get 'show_picture'
