@@ -45,7 +45,7 @@ end
 
 gem "pg"
 gem "railroady"
-gem "rails-erd"
+gem "rails-erd", group: :development
 gem "slim"
 gem "migration_data"
 gem "pry"
