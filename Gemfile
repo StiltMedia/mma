@@ -51,3 +51,6 @@ gem "migration_data"
 gem "pry"
 gem "devise"
 gem "faker"
+gem 'best_in_place', '~> 3.0.1'
+gem "activesupport-json_encoder"
+gem "font-awesome-rails"

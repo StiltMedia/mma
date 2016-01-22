@@ -14,13 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-
-
+//= require best_in_place
 
 $("document").ready(function(){
-    $("#file-upload-1").on("change",function() {
+    $("#file-upload-1, #file-upload-2").on("change",function() {
       console.log("change detected");
       $(this).closest("form").submit();
     });
+
+    $(".best_in_place").best_in_place();
 });

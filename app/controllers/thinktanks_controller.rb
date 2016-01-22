@@ -11,7 +11,7 @@ class ThinktanksController < ApplicationController
   # GET /thinktanks/1.json
   def show
     @thinktank = Thinktank.find(params[:id])
-    @is_owner = true if @thinktank.user.id = current_user.id
+    @is_owner = true if @thinktank.user_id == current_user.id
   end
 
   # GET /thinktanks/new
@@ -42,6 +42,12 @@ class ThinktanksController < ApplicationController
   # PATCH/PUT /thinktanks/1
   # PATCH/PUT /thinktanks/1.json
   def update
+    if params[:thinktank][:picture].present?
+      @thinktank.picture = params[:thinktank][:picture].read
+      @thinktank.save
+      redirect_to :back and return
+    end
+
     respond_to do |format|
       if @thinktank.update(thinktank_params)
         format.html { redirect_to @thinktank, notice: 'Thinktank was successfully updated.' }
