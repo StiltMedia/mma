@@ -23,4 +23,10 @@ $("document").ready(function(){
     });
 
     $(".best_in_place").best_in_place();
+
+    $(".inventory-index-page .add-product").on("click", function() {
+      var product = prompt("Enter the name of the inventory product you want to add:");
+      $.ajax({ url: '/inventories', type: 'post', data: { inventory: { product: product, quantity: '0', restaurant_id: $("#hidden-restaurant-id").val() } } })
+
+    });
 });

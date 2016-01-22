@@ -7,7 +7,7 @@
         <header class="header-top">
 
             <div class="go-back">
-                <a class="link link-big" href="/pages/restaurants">
+                <a class="link link-big" href="/restaurants/<%=params[:rid]%>">
                     <i><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_angle"></i>
 
                     <h3>
@@ -119,15 +119,17 @@
 
         <div class="restaurant-buttons">
             <div class="restaurant-button">
-                <a href="/recaps">
+                <a href="/recaps?rid=<%=@restaurant.id%>">
                 <img class="svg" src="<%=asset_path("icons/svg_inventory.svg")%>" alt="icon_recap">
                 <h3>RECAP</h3>
                 </a>
             </div>
             <div class="restaurant-button active">
+                <a href="/inventories?rid=<%=@restaurant.id%>">
                 <img class="svg" src="<%=asset_path("icons/svg_inventory.svg")%>" alt="icon_inventory">
 
                 <h3>INVENTORY</h3>
+                </a>
             </div>
         </div>
 

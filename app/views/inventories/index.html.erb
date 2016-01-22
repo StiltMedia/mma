@@ -1,0 +1,157 @@
+<input type="hidden" id="hidden-restaurant-id" value="<%=@restaurant.id%>">
+<!-- main site -->
+<section class="think-tank no-padding inventory-index-page">
+
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header -->
+        <header class="header-top">
+
+            <div class="go-back">
+                <a class="link link-big" href="/restaurants/<%=params[:rid]%>">
+                    <i><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_angle"></i>
+
+                    <h3>
+                        INVENTORY
+                    </h3>
+                </a>
+            </div>
+
+
+            <div class="profile">
+                <a class="link link-profile" href="/pages/edit_profile"><img class="img-circle" src="<%=url_for(:controller => "users", :action => "show_picture", :id => current_user.id)%>" alt="profile"></a>
+            </div>
+
+        </header>
+        <!-- .header -->
+    </div>
+    <!-- .header container -->
+
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header lower-->
+        <header class="header-lower centered no-padding">
+
+            <div class="header-title text-center">
+                <h4><%= @restaurant.name.upcase %></h4>
+            </div>
+
+        </header>
+        <!-- .header lower -->
+    </div>
+    <!-- .header container -->
+
+    <!-- inventory items -->
+    <div class="inventory-items">
+
+        <% @restaurant.inventories.order(:id).each do |inventory| %>
+        <!-- inventory item -->
+        <div class="inventory-item">
+
+            <div class="title">
+                <h4><%= inventory.product.upcase %></h4>
+            </div>
+
+            <div class="image black-field input-group">
+                <%= best_in_place inventory, :quantity, activator: ".fa-edit-#{inventory.id}" %>
+
+            </div>
+
+            
+            <div class="">
+                <a href="javascript:void(0)" class="fa fa-edit fa-edit-<%=inventory.id%>"></a>
+            </div>
+
+        </div>
+        <!-- .inventory item -->
+        <% end %>
+
+    </div>
+    <!-- .inventory items -->
+
+    <!-- log in button -->
+    <div class="button text-center inventory">
+        <div class="row">
+            <div class="col-md-12 <%= "hidden" if current_user.email != "sean@example.net"%>">
+                <a class="btn btn-dark submit-special add-product" href="javascript:void(0)">
+                    ADD TO LIST</a>
+            </div>
+        </div>
+    </div>
+    <!-- .log in button -->
+
+    <!-- footer nav -->
+    <footer class="footer-nav">
+        <nav>
+            <ul class="list-unstyled">
+                <li><a href="/"><img src="<%= asset_path("icons/i_home.png")%>" alt="icon_home"></a></li>
+                <li><a href="/thinktanks"><img src="<%=asset_path("icons/i_comment.png")%>" alt="icon_comment"></a></li>
+                <li><a href="/restaurants"><img src="<%=asset_path("icons/i_restaurant.png")%>" alt="icon_restaurant"></a></li>
+                <li><a href="#"><img src="<%=asset_path("icons/i_search_footer.png")%>" alt="icon_search"></a></li>
+            </ul>
+        </nav>
+    </footer>
+    <!-- footer nav -->
+
+
+</section>
+<!-- .main site -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Inventories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Restaurant</th>
+      <th>Quantity</th>
+      <th>Product</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inventories.each do |inventory| %>
+      <tr>
+        <td><%= inventory.restaurant %></td>
+        <td><%= inventory.quantity %></td>
+        <td><%= inventory.product %></td>
+        <td><%= link_to 'Show', inventory %></td>
+        <td><%= link_to 'Edit', edit_inventory_path(inventory) %></td>
+        <td><%= link_to 'Destroy', inventory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inventory', new_inventory_path %>
+-->
