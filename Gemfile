@@ -54,3 +54,4 @@ gem "faker"
 gem 'best_in_place', '~> 3.0.1'
 gem "activesupport-json_encoder"
 gem "font-awesome-rails"
+gem 'rails_12factor', group: :production
