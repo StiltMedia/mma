@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recap: MyText
+  user_id: 
+  restaurant_id: 
+  rdate: 2016-01-21 18:21:48
+
+two:
+  recap: MyText
+  user_id: 
+  restaurant_id: 
+  rdate: 2016-01-21 18:21:48

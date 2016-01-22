@@ -1,0 +1,154 @@
+
+<!-- main site -->
+<section class="think-tank no-padding">
+
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header -->
+        <header class="header-top">
+
+            <div class="go-back">
+                <a class="link link-big" href="/recaps">
+                    <i><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_angle"></i>
+
+                    <h3>
+                        RECAP
+                    </h3>
+                </a>
+            </div>
+
+            <div class="profile">
+                <a class="link link-profile" href="/pages/edit_profile"><img class="img-circle" src="<%=url_for(:controller => "users", :action => "show_picture", :id => current_user.id)%>" alt="profile"></a>
+            </div>
+
+        </header>
+        <!-- .header -->
+    </div>
+    <!-- .header container -->
+
+    <!-- think tank inside post -->
+    <div class="screen-inner">
+        <div class="container">
+
+            <!-- post inside -->
+            <div class="post-inside">
+
+                <!-- post text -->
+                <div class="text-container">
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="post-title hidden">
+                                <h6>LOREM IPSUM ASAT</h6>
+                            </div>
+
+                            <div class="post-meta">
+                                <span class="author">Author: <%= @recap.user.email %></span><br>
+                                <span class="date"><%= @recap.rdate.to_s(:long)%></span>
+                                |
+                                <span class="author"><%= @recap.restaurant.name %></span>
+                            </div>
+
+                            <div class="post-content">
+                                <%= @recap.recap %>
+
+                                
+                            </div>
+
+                            <div class="post-comments">
+                                <div class="post-title">
+                                    <h6>COMMENTS</h6>
+
+                                    <div class="comments">
+
+<% @rcomment = Rcomment.new %>
+<%= form_for(@rcomment) do |f| %>
+
+
+                                        <div class="media input-group">
+                                            <div class="media-left">
+                                                <img src="<%=url_for(:controller => "users", :action => "show_picture", :id => current_user.id)%>" alt="profile_image" class="commenter-image">
+                                            </div>
+                                            <div class="media-body">
+                                              <input style="margin-bottom: 10px" type="text" name="rcomment[rcomment]" id="rcomment_ttcomment" class="form-control"
+                                                       placeholder="Leave a Comment...">
+                                                <%= f.submit "Add Comment" %>
+                                            </div>
+                                        </div>
+
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :recap_id, :value => @recap.id %>
+    
+  <% if @rcomment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rcomment.errors.count, "error") %> prohibited this rcomment from being saved:</h2>
+
+      <ul>
+      <% @rcomment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<% end %>
+
+
+                                        <% @recap.rcomments.order(updated_at: :desc).each do |rcomment| %>
+                                        <!-- media -->
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <a href="javascript:void(0)">
+                                                  <img class="media-object img-circle commenter-image" src="<%=url_for(:controller => "users", :action => "show_picture", :id => rcomment.user.id)%>" alt="profile">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading"><%= rcomment.user.email %></h6>
+
+                                                <p>
+                                                    <%= rcomment.rcomment %>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                        <!-- media -->
+                                        <% end %>
+
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- .post text -->
+
+            </div>
+            <!-- .post inside-->
+
+        </div>
+    </div>
+    <!-- .think tank inside post -->
+
+    <!-- footer nav -->
+    <footer class="footer-nav">
+        <nav>
+            <ul class="list-unstyled">
+                <li><a href="/"><img src="<%= asset_path("icons/i_home.png")%>" alt="icon_home"></a></li>
+                <li><a href="/thinktanks"><img src="<%=asset_path("icons/i_comment.png")%>" alt="icon_comment"></a></li>
+                <li><a href="/restaurants"><img src="<%=asset_path("icons/i_restaurant.png")%>" alt="icon_restaurant"></a></li>
+                <li><a href="#"><img src="<%=asset_path("icons/i_search_footer.png")%>" alt="icon_search"></a></li>
+            </ul>
+        </nav>
+    </footer>
+    <!-- footer nav -->
+
+</section>
+<!-- .main site -->
+

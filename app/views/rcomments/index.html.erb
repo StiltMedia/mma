@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Rcomments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rcomment</th>
+      <th>User</th>
+      <th>Recap</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rcomments.each do |rcomment| %>
+      <tr>
+        <td><%= rcomment.rcomment %></td>
+        <td><%= rcomment.user %></td>
+        <td><%= rcomment.recap %></td>
+        <td><%= link_to 'Show', rcomment %></td>
+        <td><%= link_to 'Edit', edit_rcomment_path(rcomment) %></td>
+        <td><%= link_to 'Destroy', rcomment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rcomment', new_rcomment_path %>

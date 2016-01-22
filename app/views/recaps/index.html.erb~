@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Recaps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Recap</th>
+      <th>User</th>
+      <th>Restaurant</th>
+      <th>Rdate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recaps.each do |recap| %>
+      <tr>
+        <td><%= recap.recap %></td>
+        <td><%= recap.user %></td>
+        <td><%= recap.restaurant %></td>
+        <td><%= recap.rdate %></td>
+        <td><%= link_to 'Show', recap %></td>
+        <td><%= link_to 'Edit', edit_recap_path(recap) %></td>
+        <td><%= link_to 'Destroy', recap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recap', new_recap_path %>

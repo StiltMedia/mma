@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rcomment:</strong>
+  <%= @rcomment.rcomment %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @rcomment.user %>
+</p>
+
+<p>
+  <strong>Recap:</strong>
+  <%= @rcomment.recap %>
+</p>
+
+<%= link_to 'Edit', edit_rcomment_path(@rcomment) %> |
+<%= link_to 'Back', rcomments_path %>

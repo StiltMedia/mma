@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121222209) do
+ActiveRecord::Schema.define(version: 20160122022234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,29 @@ ActiveRecord::Schema.define(version: 20160121222209) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "rcomments", force: :cascade do |t|
+    t.text     "rcomment"
+    t.integer  "user_id"
+    t.integer  "recap_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "rcomments", ["recap_id"], name: "index_rcomments_on_recap_id", using: :btree
+  add_index "rcomments", ["user_id"], name: "index_rcomments_on_user_id", using: :btree
+
+  create_table "recaps", force: :cascade do |t|
+    t.text     "recap"
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.datetime "rdate"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "recaps", ["restaurant_id"], name: "index_recaps_on_restaurant_id", using: :btree
+  add_index "recaps", ["user_id"], name: "index_recaps_on_user_id", using: :btree
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
@@ -72,6 +95,10 @@ ActiveRecord::Schema.define(version: 20160121222209) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "rcomments", "recaps"
+  add_foreign_key "rcomments", "users"
+  add_foreign_key "recaps", "restaurants"
+  add_foreign_key "recaps", "users"
   add_foreign_key "thinktanks", "users"
   add_foreign_key "ttcomments", "thinktanks"
   add_foreign_key "ttcomments", "users"
