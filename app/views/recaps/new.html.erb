@@ -1,5 +1,184 @@
-<h1>New Recap</h1>
 
-<%= render 'form' %>
+
+
+<%= form_for(@recap) do |f| %>
+<!-- main site -->
+<section class="think-tank no-padding">
+
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header -->
+        <header class="header-top">
+
+            <div class="go-back">
+                <a class="link link-big" href="/recaps">
+                    <i><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_angle"></i>
+
+                    <h3>
+                        RECAP POST
+                    </h3>
+                </a>
+            </div>
+
+            <div class="profile">
+                <a class="link link-profile" href="/pages/edit_profile"><img class="img-circle" src="<%=url_for(:controller => "users", :action => "show_picture", :id => current_user.id)%>" alt="profile"></a>
+            </div>
+
+        </header>
+        <!-- .header -->
+    </div>
+    <!-- .header container -->
+
+    <!-- add post form -->
+    <div class="screen-inner">
+        <div class="container">
+
+            <div class="form-login form-alt">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" name="recap[rdate]" disabled class="form-control" placeholder="Date" value="<%=Time.now.strftime("%A, %b %d %Y") %>">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <%= select(:recap, :restaurant_id) do%>
+                              <% Restaurant.all.each do |c| -%>
+                                <%= content_tag(:option, c.name, value: c.id) %>
+                              <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <%= f.hidden_field :user_id, :value => current_user.id %>
+                            <%= f.hidden_field :rdate, :value => Time.now %>
+                            <input type="text" disabled class="form-control" value="Author: <%=current_user.email%>">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <%= f.text_area :recap, :class => "form-control", :placeholder => "WRITE..." %>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 hidden">
+                        <div class="input-group">
+                            <input class="form-control inputfile" type="file" name="file" id="file" accept="image/*"
+                                   data-multiple-caption="{count} files selected" multiple>
+                            <label for="file"><span>ADD IMAGE +</span></label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- log in button -->
+            <div class="button">
+                <div class="row">
+                    <div class="col-xs-5 col-xs-offset-1">
+                        <%= f.submit "SUBMIT", class: "btn btn-dark full" %>
+                    </div>
+                    <div class="col-xs-5">
+                        <a class="btn btn-dark full" href="/recaps">CANCEL</a>
+                    </div>
+                </div>
+            </div>
+            <!-- .log in button -->
+
+        </div>
+    </div>
+    <!-- add post form -->
+
+
+    <!-- footer nav -->
+    <footer class="footer-nav">
+        <nav>
+            <ul class="list-unstyled">
+                <li><a href="/"><img src="<%= asset_path("icons/i_home.png")%>" alt="icon_home"></a></li>
+                <li><a href="/thinktanks"><img src="<%=asset_path("icons/i_comment.png")%>" alt="icon_comment"></a></li>
+                <li><a href="/restaurants"><img src="<%=asset_path("icons/i_restaurant.png")%>" alt="icon_restaurant"></a></li>
+                <li><a href="#"><img src="<%=asset_path("icons/i_search_footer.png")%>" alt="icon_search"></a></li>
+            </ul>
+        </nav>
+    </footer>
+    <!-- footer nav -->
+
+
+</section>
+<!-- .main site -->
+
+<% end %> <!-- form_for -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<h1>New Recap</h1>
+
+
+<%= form_for(@recap) do |f| %>
+  <% if @recap.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recap.errors.count, "error") %> prohibited this recap from being saved:</h2>
+
+      <ul>
+      <% @recap.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :recap %><br>
+    <%= f.text_area :recap %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :restaurant_id %><br>
+    <%= f.text_field :restaurant_id %>
+  </div>
+  <div class="field">
+    <%= f.label :rdate %><br>
+    <%= f.datetime_select :rdate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%#= render 'form' %>
 
 <%= link_to 'Back', recaps_path %>
+-->

@@ -25,7 +25,6 @@ class RecapsController < ApplicationController
   # POST /recaps.json
   def create
     @recap = Recap.new(recap_params)
-
     respond_to do |format|
       if @recap.save
         format.html { redirect_to @recap, notice: 'Recap was successfully created.' }
