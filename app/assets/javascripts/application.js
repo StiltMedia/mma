@@ -16,13 +16,16 @@
 //= require_tree .
 //= require best_in_place
 
+$(document).on('ready page:load', function () {
+  $(".best_in_place").best_in_place();
+});
+
+
 $("document").ready(function(){
     $("#file-upload-1, #file-upload-2").on("change",function() {
       console.log("change detected");
       $(this).closest("form").submit();
     });
-
-    $(".best_in_place").best_in_place();
 
     $(".inventory-index-page .add-product").on("click", function() {
       var product = prompt("Enter the name of the inventory product you want to add:");
