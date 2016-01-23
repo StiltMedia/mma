@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [:account_home, :edit_profile]
+  before_action :authenticate_user!, only: [:account_home, :edit_profile, :restaurants]
   def landing
     if user_signed_in?
       redirect_to pages_account_home_path
@@ -16,5 +16,21 @@ class PagesController < ApplicationController
 
   def edit_profile
     @user = User.find(current_user.id)
+  end
+
+  def search
+    @search_results = []
+    @recaps = Recap.where("recap LIKE ?","%#{params[:q]}%")
+    @specials = Special.where("special LIKE ? OR title LIKE ?","%#{params[:q]}%","%#{params[:q]}%")
+    @thinktanks = Thinktank.where("thinktank LIKE ? OR title LIKE ?","%#{params[:q]}%","%#{params[:q]}%")
+    @recaps.each do |recap|
+      @search_results << recap
+    end
+    @specials.each do |special|
+      @search_results << special
+    end
+    @thinktanks.each do |thinktank|
+      @search_results << thinktank
+    end
   end
 end

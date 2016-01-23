@@ -1,5 +1,6 @@
 class SpecialsController < ApplicationController
   before_action :set_special, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /specials
   # GET /specials.json

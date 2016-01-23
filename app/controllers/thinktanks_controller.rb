@@ -1,5 +1,6 @@
 class ThinktanksController < ApplicationController
   before_action :set_thinktank, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /thinktanks
   # GET /thinktanks.json

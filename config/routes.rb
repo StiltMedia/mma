@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'pages/restaurants'
   get 'pages/coming_soon'
   get 'pages/edit_profile'
+  get 'pages/search'
 
   root 'pages#landing'
 

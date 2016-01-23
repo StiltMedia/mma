@@ -1,0 +1,99 @@
+
+<!-- main site -->
+<section class="think-tank no-padding">
+
+    <%= render "shared/header", h3_text: "RECAP" %>
+
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header lower-->
+        <header class="header-lower">
+
+            <div class="add add-post">
+                <%= link_to 'ADD RECAP +', new_recap_path, :class => "btn btn-dark" %>
+            </div>
+
+            <div class="calendar calendar-inner">
+                <a href="/pages/coming_soon">
+                    <img src="<%=asset_path("icons/i_calendar_dark.png")%>" alt="icon_calendar">
+                </a>
+            </div>
+
+        </header>
+        <!-- .header lower -->
+    </div>
+    <!-- .header container -->
+
+
+    <!-- posts -->
+    <div class="posts">
+        <% Recap.all.order(rdate: :desc).each do |recap| %>
+        <!-- post -->
+        <div class="post">
+            <div class="post-title">
+
+                <h6><a href="<%= url_for recap %>"><%= recap.restaurant.name.upcase %></a></h6>
+
+                <div class="post-meta">
+                    <span class="author">Author: <%= recap.user.email %></span>
+                </div>
+            </div>
+
+            <div class="post-date">
+                <p><%= recap.rdate.to_s%></p>
+            </div>
+        </div>
+        <!-- .post -->
+        <% end %>
+    </div>
+    <!-- posts -->
+
+    <%= render "shared/footer_nav" %>
+
+</section>
+<!-- .main site -->
+
+
+
+
+
+
+
+
+
+
+<!--
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Recaps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Recap</th>
+      <th>User</th>
+      <th>Restaurant</th>
+      <th>Rdate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recaps.each do |recap| %>
+      <tr>
+        <td><%= recap.recap %></td>
+        <td><%= recap.user %></td>
+        <td><%= recap.restaurant %></td>
+        <td><%= recap.rdate %></td>
+        <td><%= link_to 'Show', recap %></td>
+        <td><%= link_to 'Edit', edit_recap_path(recap) %></td>
+        <td><%= link_to 'Destroy', recap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recap', new_recap_path %>
+-->

@@ -1,0 +1,99 @@
+
+<!-- main site -->
+<section class="think-tank no-padding">
+
+    <%= render "shared/header", h3_text: "SEARCH" %>
+
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header lower-->
+        <header class="header-lower">
+
+            <div class="add add-post">
+                <form action="/pages/search">
+                <input name="q" type="text" class="btn btn-dark" style="color: black; background-color: white">
+                <input type="submit" value="SEARCH" class="btn btn-dark">
+                </form>
+            </div>
+
+            <div class="calendar calendar-inner hidden">
+                <a href="/pages/coming_soon">
+                    <img src="<%=asset_path("icons/i_calendar_dark.png")%>" alt="icon_calendar">
+                </a>
+            </div>
+
+        </header>
+        <!-- .header lower -->
+    </div>
+    <!-- .header container -->
+
+
+    <% @search_results.shuffle.each do |search_result| %>
+    <%
+      gist = ""
+      if search_result.class.to_s == "Recap"
+        gist = truncate(search_result.recap)
+       elsif search_result.class.to_s == "Special"
+        gist = truncate(search_result.title + " " + search_result.special)
+       elsif search_result.class.to_s == "Thinktank"
+        gist = truncate(search_result.title + " " + search_result.thinktank)
+      end
+    %>
+    <!-- posts -->
+    <div class="posts">
+        <!-- post -->
+        <div class="post">
+            <div class="post-title">
+                <h6><a href="<%=url_for(search_result)%>"><%= gist %></a></h6>
+
+                <div class="post-meta">
+                    <span class="author">Date: <%= search_result.updated_at %></span>
+                </div>
+            </div>
+
+            <div class="post-date">
+                <p><%= search_result.class.to_s.upcase %></p>
+            </div>
+        </div>
+        <!-- .post -->
+    </div>
+    <!-- posts -->
+    <% end %>
+
+
+    <% if @search_results.empty? %>
+    <!-- posts -->
+    <div class="posts">
+        <!-- post -->
+        <div class="post">
+            <div class="post-title">
+
+                <h6><a href="/google.com">No results</a></h6>
+
+                <div class="post-meta">
+                    <span class="author"></span>
+                </div>
+            </div>
+
+            <div class="post-date">
+                <p></p>
+            </div>
+        </div>
+        <!-- .post -->
+    </div>
+    <!-- posts -->
+    <% end %>
+
+    <%= render "shared/footer_nav" %>
+
+</section>
+<!-- .main site -->
+
+
+
+
+
+
+
+
+
