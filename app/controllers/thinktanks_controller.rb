@@ -48,7 +48,7 @@ class ThinktanksController < ApplicationController
     #  redirect_to :back and return
     #end
     h = thinktank_params.to_h
-    h[:picture] = params[:thinktank][:picture].read
+    h[:picture] = params[:thinktank][:picture].read if params[:thinktank][:picture]
     respond_to do |format|
       if @thinktank.update(h)
         format.html { redirect_to "/thinktanks", notice: 'Thinktank was successfully updated.' }
