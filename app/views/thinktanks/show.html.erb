@@ -4,7 +4,7 @@
 <!-- main site -->
 <section class="think-tank no-padding">
 
-    <%= render "shared/header", h3_text: "TITLE OF POST HERE" %>
+    <%= render "shared/header", h3_text: "", back_link: "/thinktanks" %>
 
 
     <!-- think tank inside post -->
@@ -19,11 +19,6 @@
                     <div class="row">
                         <div class="col-md-12">
                             <img src="<%=url_for(:controller => "thinktanks", :action => "show_picture", :id => @thinktank.id)%>" alt="post_image">
-                            <% if @is_owner %>
-                            <%= form_for(@thinktank) do |f| %>
-                            <%= f.file_field :picture, accept: 'image/jpeg,image/jpg', id: "file-upload-2" %>
-                            <% end %>
-                            <%end%>
 
 
                         </div>
@@ -38,7 +33,7 @@
                         <div class="col-md-12">
 
                             <div class="post-title">
-                                <h6><%= best_in_place_if @is_owner, @thinktank,  :title, :activator => ".fa-edit-title" %>  &nbsp;&nbsp;<a href="javascript:void(0)" class="fa fa-edit fa-edit-title <%= "hidden" if !@is_owner%>"></a></h6>
+                                <h6><%= @thinktank.title %></h6>
                             </div>
 
                             <div class="post-meta">
@@ -48,9 +43,7 @@
                             </div>
 
                             <div class="post-content">
-                                
-                                <%= best_in_place_if @is_owner, @thinktank, :thinktank, :activator => ".fa-edit-thinktank", :as => :textarea %>
-                                &nbsp;&nbsp;<a href="javascript:void(0)" class="fa fa-edit fa-edit-thinktank <%= "hidden" if !@is_owner%>"></a>
+                                <div><%= @thinktank.thinktank %></div>
                                 <!--
                                 <ul class="list-unstyled">
                                     <li>Ingredients:</li>

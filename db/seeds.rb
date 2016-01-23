@@ -11,3 +11,8 @@ User.all.each do |user|
   user.save
 end
 
+Thinktank.all.each do |thinktank|
+  thinktank.picture = (open("app/assets/images/thinktank-#{rand(2..6)}.jpg", 'rb') { |f| f.read })
+  thinktank.save
+end
+

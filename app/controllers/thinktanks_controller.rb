@@ -16,7 +16,7 @@ class ThinktanksController < ApplicationController
 
   # GET /thinktanks/new
   def new
-    @thinktank = Thinktank.new
+    @thinktank = Thinktank.create(user_id: current_user.id, title: nil, user_id: current_user.id, thinktank: nil)
   end
 
   # GET /thinktanks/1/edit
@@ -42,15 +42,16 @@ class ThinktanksController < ApplicationController
   # PATCH/PUT /thinktanks/1
   # PATCH/PUT /thinktanks/1.json
   def update
-    if params[:thinktank][:picture].present?
-      @thinktank.picture = params[:thinktank][:picture].read
-      @thinktank.save
-      redirect_to :back and return
-    end
-
+    #if params[:thinktank][:picture].present?
+    #  @thinktank.picture = params[:thinktank][:picture].read
+    #  @thinktank.save
+    #  redirect_to :back and return
+    #end
+    h = thinktank_params.to_h
+    h[:picture] = params[:thinktank][:picture].read
     respond_to do |format|
-      if @thinktank.update(thinktank_params)
-        format.html { redirect_to @thinktank, notice: 'Thinktank was successfully updated.' }
+      if @thinktank.update(h)
+        format.html { redirect_to "/thinktanks", notice: 'Thinktank was successfully updated.' }
         format.json { render :show, status: :ok, location: @thinktank }
       else
         format.html { render :edit }
@@ -70,9 +71,12 @@ class ThinktanksController < ApplicationController
   end
 
   def show_picture
-    @thinktank = Thinktank.find(params[:id])
-    @thinktank.picture = (open('app/assets/images/thinktank-1.jpg', 'rb') { |f| f.read }) if ! @thinktank.picture
-    send_data @thinktank.picture, :type => 'image/jpg',:disposition => 'inline'
+    if (!params[:id] || !Thinktank.find(params[:id]).picture )
+      binary_data = (open('app/assets/images/thinktank-1.jpg', 'rb') { |f| f.read })
+      send_data binary_data, :type => 'image/jpg',:disposition => 'inline'
+    else
+      send_data Thinktank.find(params[:id]).picture, :type => 'image/jpg', :disposition => 'inline'
+    end
   end
 
 

@@ -1,5 +1,69 @@
-<h1>New Thinktank</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', thinktanks_path %>
+<%= form_for(@thinktank) do |f| %>
+
+<!-- main site -->
+<section class="think-tank no-padding">
+
+    <%= render "shared/header", h3_text: "ADD POST", back_link: "/thinktanks" %>
+
+    <!-- add post form -->
+    <div class="screen-inner">
+        <div class="container">
+
+            <div class="form-login form-alt">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <%= f.text_field :title, :class => "form-control", :placeholder => "TITLE" %>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="AUTHOR" value="AUTHOR: <%= @thinktank.user.email.upcase %>">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <%= f.text_area :thinktank, :class => "form-control", :placeholder => "WRITE..."  %>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <%= f.file_field :picture, :class => "form-control inputfile" %>
+
+                            <label for="file"><span>ADD IMAGE +</span></label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- log in button -->
+            <div class="button think-buttons">
+                <div class="row">
+                    <div class="col-xs-5 col-xs-offset-1">
+                      <%= f.submit "SUBMIT", :class => "btn btn-dark full" %>
+                    </div>
+                    <div class="col-xs-5">
+                        <a class="btn btn-dark full" href="/thintanks">CANCEL</a>
+                    </div>
+                </div>
+            </div>
+            <!-- .log in button -->
+
+        </div>
+    </div>
+    <!-- add post form -->
+
+<% end %> <!-- form_for -->
+
+    <%= render "shared/footer_nav" %>
+
+</section>
+<!-- .main site -->
+

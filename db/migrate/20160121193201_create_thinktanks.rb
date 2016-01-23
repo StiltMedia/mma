@@ -14,7 +14,7 @@ class CreateThinktanks < ActiveRecord::Migration
       20.times do
       random_user_id = User.all.sample(1)[0].id
       Thinktank.create!(title: Faker::Commerce.product_name, thinktank: Faker::Hipster.paragraphs(rand(2..5)).join("\n\n"),
-        user_id: random_user_id, picture: (open('app/assets/images/thinktank-1.jpg', 'rb') { |f| f.read })  )
+        user_id: random_user_id, picture: (open("app/assets/images/thinktank-#{rand(2..7)}.jpg", 'rb') { |f| f.read })  )
     end
   end
 end

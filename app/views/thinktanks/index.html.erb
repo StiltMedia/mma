@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 
 <!-- main site -->
 <section class="think-tank no-padding">
@@ -11,12 +10,12 @@
         <header class="header-lower">
 
             <div class="add add-post">
-                <a class="btn btn-dark" href="recap_post.html">ADD +</a>
+                <a class="btn btn-dark" href="/thinktanks/new">ADD +</a>
             </div>
 
             <div class="calendar calendar-inner">
                 <a href="calendar.html" class="hidden">
-                    <img src="img/icons/i_calendar_dark.png" alt="icon_calendar">
+                    <img src="<%=asset_path("icons/i_calendar_dark.png")%>" alt="icon_calendar">
                 </a>
             </div>
 
@@ -32,7 +31,7 @@
     <!-- posts -->
     <div class="posts">
 
-        <% Thinktank.all.each do |thinktank| %>
+        <% Thinktank.all.order(updated_at: :desc).each do |thinktank| %>
         <!-- post -->
         <div class="post">
 
