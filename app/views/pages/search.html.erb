@@ -44,7 +44,11 @@
         <!-- post -->
         <div class="post">
             <div class="post-title">
-                <h6><a href="<%=url_for(search_result)%>"><%= gist %></a></h6>
+                <% if search_result.class.to_s == "Special" %>
+                  <h6><%= gist %></h6>
+                <% else %>
+                  <h6><a href="<%= url_for(search_result)%>"><%= gist %></a></h6>
+                <% end %>
 
                 <div class="post-meta">
                     <span class="author">Date: <%= search_result.updated_at %></span>
