@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.all.each do |user|
+  user.picture = (open("app/assets/images/chef-#{rand(2..6)}.jpg", 'rb') { |f| f.read })
+  user.save
+end
+
