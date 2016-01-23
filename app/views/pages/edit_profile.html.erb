@@ -2,35 +2,11 @@
 <!-- main site -->
 <section class="screen no-padding edit">
 
-    <!-- header container -->
-    <div class="header-container">
-        <!-- header -->
-        <header class="header-top">
+    <%= render "shared/header", h3_text: "EDIT PROFILE" %>
 
-            <div class="go-back">
-                <a class="link link-big" href="/">
-                    <i><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_angle"></i>
-
-                    <h3>
-                        EDIT PROFILE
-                    </h3>
-                </a>
-            </div>
-
-            <div class="profile">
-                <a class="link link-profile" href="/pages/edit_profile"><img class="img-circle" src="<%=url_for(:controller => "users", :action => "show_picture", :id => current_user.id)%>"
-                                                           alt="profile"></a>
-            </div>
-
-        </header>
-        <!-- .header -->
-    </div>
-    <!-- .header container -->
 
     <div class="screen-inner">
         <div class="container">
-
-
 
             <!-- log in button -->
             <div class="button">
@@ -127,18 +103,8 @@
         </div>
     </div>
 <% end %>
-    <!-- footer nav -->
-    <footer class="footer-nav">
-        <nav>
-            <ul class="list-unstyled">
-                <li><a href="/"><img src="<%=asset_path("icons/i_home.png")%>" alt="icon_home"></a></li>
-                <li><a href="/thinkthanks"><img src="<%=asset_path("icons/i_comment.png")%>" alt="icon_comment"></a></li>
-                <li><a href="restaurants.html"><img src="<%=asset_path("icons/i_restaurant.png")%>" alt="icon_restaurant"></a></li>
-                <li><a href="/pages/coming_search"><img src="<%=asset_path("icons/i_search_footer.png")%>" alt="icon_search"></a></li>
-            </ul>
-        </nav>
-    </footer>
-    <!-- footer nav -->
+
+    <%= render "shared/footer_nav" %>
 
 </section>
 <!-- .main site -->

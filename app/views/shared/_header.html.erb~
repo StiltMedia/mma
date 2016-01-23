@@ -1,0 +1,27 @@
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header -->
+        <header class="header-top">
+
+            <div class="go-back">
+                <a class="link link-big" href="/restaurants/<%=params[:rid]%>">
+                    <i><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_angle"></i>
+
+                    <h3>
+                        <%= @restaurant.name.upcase %> RESTAURANT
+                    </h3>
+                </a>
+            </div>
+
+
+
+            <div class="profile">
+                <a class="link link-profile" href="/pages/edit_profile"><img class="img-circle" src="<%=url_for(:controller => "users", :action => "show_picture", :id => current_user.id)%>"
+                                                           alt="profile"></a>
+            </div>
+
+
+        </header>
+        <!-- .header -->
+    </div>
+    <!-- .header container -->
