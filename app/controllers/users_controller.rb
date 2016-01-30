@@ -40,20 +40,15 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    if params[:user][:picture].present?
+    if params[:user].keys == ["picture"]
+      @user.mimetype = params[:user][:picture].content_type
       @user.picture = params[:user][:picture].read
       @user.save
-      redirect_to pages_edit_profile_path and return
+      redirect_to :back and return
     end
-    users_params = user_params.except(:password) if params[:user][:password].blank?
-    if params[:user][:password].blank?
-      retval = @user.update(user_params.except(:password))
-    else
-      retval = @user.update(user_params)
-    end
+    (params[:user].delete("password") if params[:user][:password].blank?) rescue nil
     respond_to do |format|
-      if retval
-        sign_in(@user, :bypass => true)
+      if @user.update(user_params)
         format.html { redirect_to pages_edit_profile_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -62,6 +57,30 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  #def update
+  #  if params[:user][:picture].present?
+  #    @user.picture = params[:user][:picture].read
+  #    @user.save
+  #    redirect_to pages_edit_profile_path and return
+  #  end
+  #  users_params = user_params.except(:password) if params[:user][:password].blank?
+  #  if params[:user][:password].blank?
+  #    retval = @user.update(user_params.except(:password))
+  #  else
+  #    retval = @user.update(user_params)
+  #  end
+  #  respond_to do |format|
+  #    if retval
+  #      sign_in(@user, :bypass => true)
+  #      format.html { redirect_to pages_edit_profile_path, notice: 'User was successfully updated.' }
+  #      format.json { render :show, status: :ok, location: @user }
+  #    else
+  #      format.html { redirect_to pages_edit_profile_path, notice: 'Unprocessable entity' }
+  #      format.json { render json: @user.errors, status: :unprocessable_entity }
+  #    end
+  #  end
+  #end
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -87,6 +106,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :picture)
     end
 end

@@ -1,4 +1,5 @@
 
+
 <!-- main site -->
 <section class="screen no-padding edit">
 
@@ -19,23 +20,26 @@
                 </div>
             </div>
             <!-- .log in button -->
-<%= form_for(@user) do |f| %>
 
 
-
-            <!-- logo -->
-            <div class="logo-screen text-center edit-image">
+<%= form_for(@user, :html => { 'data-id' => @user.id, 'class' => 'file-upload-1-form' }) do |f| %>
+  <center><%= f.file_field :picture, accept: 'image/jpeg,image/jpg', class: 'file-upload-1'  %></center>
+<% end %>
+            <div class="button">
                 <div class="row">
                     <div class="col-md-12">
-                        <img class="img-responsive edit-profile avatar-01" src="<%=url_for(:controller => "users", :action => "show_picture", :id => @user.id)%>" alt="profile_image">
-                        <!--<%= image_tag url_for(:controller => "users", :action => "show_picture", :id => @user.id), :class => "img-responsive edit-profile avatar-01" %>-->
-                        <br>
-                        <center><%= f.file_field :picture, accept: 'image/jpeg,image/jpg', id: "file-upload-1" %></center>
-
-
+                        <div class="text-center">
+                          <img class="zimg-responsive edit-profile avatar-01" src="<%=url_for(:controller => "users", :action => "show_picture", :id => @user.id)%>" alt="profile_image">
+                        </div>
                     </div>
                 </div>
             </div>
+
+<%= form_for(@user, :html => { 'data-id' => @user.id}) do |f| %>
+
+
+            <input type='hidden' name='_method' value='put'>
+            <!-- logo -->
             <!-- .logo -->
 
 
@@ -108,3 +112,16 @@
 
 </section>
 <!-- .main site -->
+
+
+
+
+<div id="saving-1" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content text-center">
+      Saving ..
+    </div>
+  </div>
+</div>
+
+

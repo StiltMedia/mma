@@ -16,13 +16,22 @@
 //= require_tree .
 //= require best_in_place
 
+
+
 $(document).on('ready page:load', function () {
   $(".best_in_place").best_in_place();
 });
+  
 
 
 $("document").ready(function(){
-    $("#file-upload-1, #file-upload-2").on("change",function() {
+
+    $(".file-upload-1").change(function (){
+      $('#saving-1').modal('show');
+      $(this).closest('form').submit();
+    });
+
+    $("#file-upload-2").on("change",function() {
       console.log("change detected");
       $(this).closest("form").submit();
     });
@@ -33,3 +42,4 @@ $("document").ready(function(){
 
     });
 });
+
