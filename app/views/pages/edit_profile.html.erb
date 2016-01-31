@@ -23,7 +23,7 @@
 
 
 <%= form_for(@user, :html => { 'data-id' => @user.id, 'class' => 'file-upload-1-form' }) do |f| %>
-  <center><%= f.file_field :picture, accept: 'image/jpeg,image/jpg', class: 'file-upload-1'  %></center>
+  <center><%= f.file_field :picture, accept: 'image/*', class: 'file-upload-1'  %></center>
 <% end %>
             <div class="button">
                 <div class="row">
