@@ -40,9 +40,16 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    require 'rmagick'
     if params[:user].keys == ["picture"]
       @user.mimetype = params[:user][:picture].content_type
       @user.picture = params[:user][:picture].read
+      @user.save
+      @user = User.find(@user.id)
+      picture = Magick::Image.from_blob(@user.picture)[0]
+      picture.auto_orient!
+      picture.resize_to_fit!(300, 300)
+      @user.picture = picture.to_blob
       @user.save
       redirect_to :back and return
     end
