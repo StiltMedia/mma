@@ -26,7 +26,12 @@ $(document).on('ready page:load', function () {
 
 $("document").ready(function(){
 
-    $(".file-upload-1").change(function (){
+    $(".file-upload-1").change(function (event){
+      if (this.files[0].size >= 4194304) {
+        alert('File is too large (>4MB). Please try again.');
+        event.preventDefault();
+        return;
+      }
       $('#saving-1').modal('show');
       $(this).closest('form').submit();
     });
