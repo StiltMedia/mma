@@ -41,7 +41,7 @@
             <div class="special-content">
                 <h4><%= special.title %></h4>
 
-                <p><%= special.special %></p>
+                <p><%= truncate(special.special, :omission => "...", :length => 70) %></p>
             </div>
         </div>
         <!--.special item -->
