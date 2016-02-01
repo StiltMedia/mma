@@ -31,19 +31,21 @@
 
     <!-- specials items -->
     <div class="specials-items">
-
         <% @restaurant.specials.all.each do |special| %>
+        <a href="/specials/<%=special.id%>">
         <!-- special item -->
-        <div class="special-item">
-            <div class="special-image">
-                <img src="<%=url_for(:controller => "specials", :action => "show_picture", :id => special.id)%>" alt="special_image">
-            </div>
-            <div class="special-content">
-                <h4><%= special.title %></h4>
-
-                <p><%= truncate(special.special, :omission => "...", :length => 70) %></p>
-            </div>
-        </div>
+        
+          <div class="special-item">
+              <div class="special-image">
+                  <img src="<%=url_for(:controller => "specials", :action => "show_picture", :id => special.id)%>" alt="special_image">
+              </div>
+              <div class="special-content">
+                  <h4><%= special.title %></h4>
+	  
+                  <p><%= truncate(special.special, :omission => "...", :length => 70) %></p>
+              </div>
+          </div>
+        </a>
         <!--.special item -->
         <% end %>
 
