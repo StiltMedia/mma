@@ -77,10 +77,10 @@ jQuery(document).ready(function ($) {
 
     // hide footer on input focus
     $('input, textarea').blur(function () {
-            $('.footer-nav').removeClass("focus");
+            //$('.footer-nav').removeClass("focus");
         })
         .focus(function () {
-            $('.footer-nav').addClass("focus")
+            //$('.footer-nav').addClass("focus")
         });
 
     // update image on click
