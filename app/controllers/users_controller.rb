@@ -102,7 +102,9 @@ class UsersController < ApplicationController
   def show_picture
     @user = User.find(params[:id])
     @user.picture = (open('app/assets/images/chef-1.jpg', 'rb') { |f| f.read }) if ! @user.picture
-    send_data @user.picture, :type => @user.mimetype ,:disposition => 'inline'
+    mimetype = @user.mimetype
+    mimetype = "image/jpg" if @user.mimetype.blank?
+    send_data @user.picture, :type => mimetype ,:disposition => 'inline'
   end
 
   private
