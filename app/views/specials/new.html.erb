@@ -1,4 +1,4 @@
-<%= form_for(@special) do |f| %>
+<%= form_for(@special, :html=>{:onsubmit=>"show_dialog_saving();"}) do |f| %>
 <!-- main site -->
 <section class="think-tank no-padding">
 
@@ -31,7 +31,7 @@
 
                     <div class="col-md-12">
                         <div class="input-group">
-                            <%= f.file_field :picture, accept: 'image/jpeg,image/jpg', id: "file-upload-3" %>
+                            <%= f.file_field :picture, accept: 'image/*', id: "file-upload-3" %>
 
                         </div>
                     </div>
@@ -63,3 +63,15 @@
 <!-- .main site -->
 
 <% end %> <!-- form_for -->
+
+
+<div id="saving-3" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content text-center">
+      <br>
+      Saving ..
+      <br><br>
+    </div>
+  </div>
+</div>
+

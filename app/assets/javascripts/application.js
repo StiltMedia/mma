@@ -21,11 +21,21 @@
 $(document).on('ready page:load', function () {
   $(".best_in_place").best_in_place();
 });
-  
-
 
 $("document").ready(function(){
 
+    $("#file-upload-3").change(function (event){
+      if (this.files[0].size >= 4194304) {
+        alert('File is too large (>4MB). Please try again.');
+        event.preventDefault();
+        this.value = null;
+        return true;
+      }
+      $('#saving-3').modal('show');
+      //$(this).closest('form').submit();
+    });
+
+    
     $(".file-upload-1").change(function (event){
       if (this.files[0].size >= 4194304) {
         alert('File is too large (>4MB). Please try again.');
@@ -48,3 +58,6 @@ $("document").ready(function(){
     });
 });
 
+function show_dialog_saving() {
+  $('#saving-3').modal('show');  
+}
