@@ -68,7 +68,7 @@
                 <h3>RECAP</h3>
                 </a>
             </div>
-            <div class="restaurant-button active">
+            <div class="restaurant-button <%= @restaurant.inventory_filled?("foo") ? "" : "active"%>">
                 <a href="/inventories?rid=<%=@restaurant.id%>">
                 <img class="svg" src="<%=asset_path("icons/svg_inventory.svg")%>" alt="icon_inventory">
 
