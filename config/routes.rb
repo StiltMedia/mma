@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/seek' => 'restaurants#seek'
+  post '/seek' => 'restaurants#seek'
   resources :restaurants
   get '/restaurants/:id/seek_bwd' => 'restaurants#seek_bwd'
   get '/restaurants/:id/seek_fwd' => 'restaurants#seek_fwd'

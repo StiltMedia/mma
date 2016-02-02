@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  skip_before_filter :verify_authenticity_token, :only => [:seek]
 
   # GET /restaurants
   # GET /restaurants.json
@@ -12,6 +13,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    logger.debug "DB8 99 show() session id was #{session.id}"
     if session[:seek_date]
       @seek_date = session[:seek_date]
     else
@@ -89,6 +91,7 @@ class RestaurantsController < ApplicationController
   end
 
   def seek
+    logger.debug "DB8 99 seek() session id was #{session.id}"
     logger.debug "DB8 before session seek_date #{session[:seek_date]}"
     session[:seek_date] = Time.strptime( params[:seek_date],"%Y-%m-%d").to_i
     logger.debug "DB8 after #{session[:seek_date]}"
