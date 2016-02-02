@@ -1,0 +1,23 @@
+
+<!-- main site -->
+<section class="calendar-container no-padding">
+
+    <!-- calendar -->
+    <div id="calendar"></div>
+    <!-- .calendar -->
+
+</section>
+
+<script>
+$(function() {
+    $("#calendar").zabuto_calendar({
+      data: [ {date: "<%= Time.at(@sel_date).strftime("%Y-%m-%d")  %>", badge: false, title: "string" } ],
+      action: function() {
+        $.getJSON( "/seek?seek_date=" + $("#" + this.id).data("date"), function( json ) {
+          console.log( "JSON Data: " );
+        });
+        window.location.href = "<%= params[:link_back] %>";
+      }
+    });
+});
+</script>

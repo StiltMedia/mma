@@ -1,4 +1,21 @@
 
+
+    <!-- search popup -->
+    <div class="search-popup">
+        <div class="close-overlay"><img src="<%=asset_path("icons/close.png")%>" alt="icon_close"></div>
+
+        <div class="input-group">
+            <input type="text" class="form-control form-alt white">
+            <form  action="/pages/search">
+            
+            <input id="q" type="hidden" name="q" value="">
+            <i><img class="icon_search" src="<%=asset_path("icons/i_search_white.png")%>" alt="icon_search"></i>
+            </form>
+        </div>
+
+    </div>
+    <!-- .search popup -->
+
     <!-- footer nav -->
     <footer class="footer-nav">
         <nav>
@@ -6,8 +23,9 @@
                 <li><a href="/"><img src="<%= asset_path("icons/i_home.png")%>" alt="icon_home"></a></li>
                 <li><a href="/thinktanks"><img src="<%=asset_path("icons/i_comment.png")%>" alt="icon_comment"></a></li>
                 <li><a href="/restaurants"><img src="<%=asset_path("icons/i_restaurant.png")%>" alt="icon_restaurant"></a></li>
-                <li><a href="/pages/search"><img src="<%=asset_path("icons/i_search_footer.png")%>" alt="icon_search"></a></li>
+                <li class="search"><a href="#"><img src="<%=asset_path("icons/i_search_footer.png")%>" alt="icon_search"></a></li>
             </ul>
         </nav>
     </footer>
     <!-- footer nav -->
+

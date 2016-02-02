@@ -11,15 +11,16 @@ class CreateRecaps < ActiveRecord::Migration
   end
 
   def data
-    200.times do
-      t1 = Time.parse("2015-06-20 14:40:34")
-      t2 = Time.now()
-      Recap.create!(
-        recap: Faker::Hipster.paragraphs(rand(1..3)).join(" "),
-        user_id: User.all.sample(1)[0].id,
-        restaurant_id: Restaurant.all.sample(1)[0].id,
-        rdate: rand(t1..t2)
-      )
+    start_date = Time.parse("2015-01-01T00:00:00-05:00")
+    (365*2).times do |i|
+      if (rand(0..3)>0)
+        Recap.create!(
+          recap: Faker::Hipster.paragraphs(rand(1..3)).join(" "),
+          user_id: User.all.sample(1)[0].id,
+          restaurant_id: Restaurant.all.sample(1)[0].id,
+          rdate: start_date+i.days
+        )
+      end
     end
   end
 end

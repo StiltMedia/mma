@@ -32,7 +32,12 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/seek' => 'restaurants#seek'
   resources :restaurants
+  get '/restaurants/:id/seek_bwd' => 'restaurants#seek_bwd'
+  get '/restaurants/:id/seek_fwd' => 'restaurants#seek_fwd'
+
+  get '/pages/calendar'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

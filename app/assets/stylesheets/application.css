@@ -44,3 +44,7 @@
   height: 98px;
   overflow: hidden;
 }
+
+.search-popup img.icon_search {
+  cursor: pointer;
+}

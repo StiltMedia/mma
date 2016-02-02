@@ -1114,3 +1114,54 @@ div.zabuto_calendar div.legend span.badge-today {
 .modal .modal-content {
   border-radius: 0;
 }
+
+
+
+
+
+/* search popup*/
+.search-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 40px;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.search-popup .input-group .form-control.form-alt.white {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+}
+.search-popup .input-group i {
+  top: -5px;
+  right: 0;
+  left: auto;
+  max-width: 24px;
+}
+.search-popup .close-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  max-width: 24px;
+}
+.search-popup.active {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}

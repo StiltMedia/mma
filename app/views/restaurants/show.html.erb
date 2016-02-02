@@ -9,14 +9,14 @@
         <header class="header-lower no-padding">
 
             <div class="date">
-                <a href="/pages/coming_soon"><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_calendar"></a>
+                <a href="/restaurants/<%=@restaurant.id%>/seek_bwd"><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_calendar"></a>
 
-                <p>THURSDAY, NOV 11 2015</p>
-                <a href="/pages/coming_soon"><img src="<%=asset_path("icons/i_angle_right.png")%>" alt="icon_calendar"></a>
+                <p><%= Time.at(session[:seek_date]).strftime("%A, %b %d %Y") %></p>
+                <a href="/restaurants/<%=@restaurant.id%>/seek_bwd"><img src="<%=asset_path("icons/i_angle_right.png")%>" alt="icon_calendar"></a>
             </div>
 
             <div class="calendar calendar-special">
-                <a href="/pages/coming_soon"><img src="<%=asset_path("icons/i_calendar_dark.png")%>" alt="icon_calendar"></a>
+                <a href="/pages/calendar?sel_date=<%=session[:seek_date]%>&link_back=<%=URI.escape("/restaurants/#{@restaurant.id}")%>"><img src="<%=asset_path("icons/i_calendar_dark.png")%>" alt="icon_calendar"></a>
             </div>
 
             <div class="add add-special">
@@ -31,7 +31,7 @@
 
     <!-- specials items -->
     <div class="specials-items">
-        <% @restaurant.specials.all.each do |special| %>
+        <% @restaurant.specials.where(sdate: Time.at(session[:seek_date]).midnight..(Time.at(session[:seek_date])+1.day).midnight  ).each do |special| %>
         <a href="/specials/<%=special.id%>">
         <!-- special item -->
         
@@ -57,8 +57,12 @@
     <footer class="footer-top">
 
         <div class="restaurant-buttons">
-            <div class="restaurant-button">
-                <a href="/recaps?rid=<%=@restaurant.id%>">
+            <div class="restaurant-button <%= @recap_pending ? "active" : "" %>">
+                <% if @recap_pending %>
+                <a href="/recaps/new">
+                <% else %>
+                <a href="/recaps/<%=@todays_recap.id%>">
+                <% end %>
                 <img class="svg" src="<%=asset_path("icons/svg_inventory.svg")%>" alt="icon_recap">
                 <h3>RECAP</h3>
                 </a>

@@ -33,4 +33,11 @@ class PagesController < ApplicationController
       @search_results << thinktank
     end
   end
+
+  def calendar
+    @sel_date = Time.zone.now().to_i
+    if params[:sel_date].present?
+      @sel_date = Time.at(params[:sel_date].to_i)
+    end
+  end
 end

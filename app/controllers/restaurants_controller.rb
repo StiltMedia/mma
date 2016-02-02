@@ -12,6 +12,19 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    if session[:seek_date]
+      @seek_date = session[:seek_date]
+    else
+      session[:seek_date] = Time.zone.now().to_i
+      @seek_date = session[:seek_date]
+    end
+
+    @recap_pending = nil
+    @recap_pending = true if @restaurant.recaps.where(rdate: Time.at(session[:seek_date]).midnight-1.day..Time.at(session[:seek_date]).midnight).all.size == 0
+    @todays_recap = @restaurant.recaps.where(rdate: Time.at(session[:seek_date]).midnight-1.day..Time.at(session[:seek_date]).midnight).all.last if @restaurant.recaps.where(rdate: Time.at(session[:seek_date]).midnight-1.day..Time.at(session[:seek_date]).midnight).all.size > 0
+
+    #@inventory_pending = nil
+    #@inventory_pending = true if @restaurant.inventories.where(updated_at: Time.at(session[:seek_date]).midnight-1.day..Time.at(session[:seek_date]).midnight).all.size == 0
   end
 
   # GET /restaurants/new
@@ -61,6 +74,23 @@ class RestaurantsController < ApplicationController
       format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # pushes date back by one
+  def seek_bwd
+    session[:seek_date] = (Time.at(session[:seek_date]) - 1.day ).to_i
+    redirect_to :back
+  end
+
+  # pushes date forward by one
+  def seek_bwd
+    session[:seek_date] = (Time.at(session[:seek_date]) + 1.day ).to_i
+    redirect_to :back
+  end
+
+  def seek
+    session[:seek_date] = Time.strptime( params[:seek_date],"%Y-%m-%d").to_i
+    render json: { status: "ok" }
   end
 
   private

@@ -10,12 +10,12 @@ class CreateInventories < ActiveRecord::Migration
   end
 
   def data
-    100.times do
-      Inventory.create!(
-        restaurant_id: Restaurant.all.sample(1)[0].id,  
-        quantity: rand(0..100),
-        product: Faker::SlackEmoji.food_and_drink.gsub(/:/,'').titlecase
-      )
-    end
+    #100.times do
+    #  Inventory.create!(
+    #    restaurant_id: Restaurant.all.sample(1)[0].id,  
+    #    quantity: rand(0..100),
+    #    product: Faker::SlackEmoji.food_and_drink.gsub(/:/,'').titlecase
+    #  )
+    #end
   end
 end
