@@ -89,7 +89,9 @@ class RestaurantsController < ApplicationController
   end
 
   def seek
+    logger.debug "DB8 before session seek_date #{session[:seek_date]}"
     session[:seek_date] = Time.strptime( params[:seek_date],"%Y-%m-%d").to_i
+    logger.debug "DB8 after #{session[:seek_date]}"
     render json: { status: "ok" }
   end
 
