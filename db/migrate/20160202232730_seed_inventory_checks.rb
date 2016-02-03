@@ -4,9 +4,9 @@ class SeedInventoryChecks < ActiveRecord::Migration
 
   def data
     RestaurantProduct.all.each do |rp|
-      start_date = Time.parse("2015-01-01T00:00:00-05:00")
+      start_date = Time.parse("2015-06-01T00:00:00-05:00")
       the_date = start_date
-      (365*2).times do
+      (365*1).times do
         if ( rand(1..3)==1 )
           InventoryCheck.create(
             restaurant_product_id: rp.id,
@@ -19,9 +19,9 @@ class SeedInventoryChecks < ActiveRecord::Migration
     end
 
     # remove all inventorychecks for some random days
-    start_date = Time.parse("2015-01-01T00:00:00-05:00")
+    start_date = Time.parse("2015-06-01T00:00:00-05:00")
     the_date = start_date
-    (365*2).times do
+    (365*1).times do
       range_start = the_date.midnight
       range_end = (the_date+1.day).midnight
       if (rand(1..2)==1)

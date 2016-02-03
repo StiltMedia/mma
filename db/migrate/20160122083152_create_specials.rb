@@ -14,8 +14,8 @@ class CreateSpecials < ActiveRecord::Migration
   def data
     require 'time'
     Restaurant.all.each do |restaurant|
-      start_date = Time.parse("2015-01-01T00:00:00-05:00") 
-      (365*2).times do |i|
+      start_date = Time.parse("2015-06-01T00:00:00-05:00") 
+      (365*1).times do |i|
         (rand(1..3)).times do
           restaurant.specials << Special.new(
             title: Faker::Hipster.sentence,

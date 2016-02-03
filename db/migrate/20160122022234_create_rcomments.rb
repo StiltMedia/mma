@@ -11,7 +11,7 @@ class CreateRcomments < ActiveRecord::Migration
 
   def data
     Recap.all.each do |recap|
-      rand(1..10).times do
+      rand(1..3).times do
         recap.rcomments << Rcomment.new(rcomment: Faker::Hipster.paragraphs(rand(1..6)).join("\n"),
           user_id: User.all.sample(1)[0].id)
       end
