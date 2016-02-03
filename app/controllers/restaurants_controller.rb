@@ -22,8 +22,8 @@ class RestaurantsController < ApplicationController
     end
 
     @recap_pending = nil
-    @recap_pending = true if @restaurant.recaps.where(rdate: Time.at(session[:seek_date]).midnight-1.day..Time.at(session[:seek_date]).midnight).all.size == 0
-    @todays_recap = @restaurant.recaps.where(rdate: Time.at(session[:seek_date]).midnight-1.day..Time.at(session[:seek_date]).midnight).all.last if @restaurant.recaps.where(rdate: Time.at(session[:seek_date]).midnight-1.day..Time.at(session[:seek_date]).midnight).all.size > 0
+    @recap_pending = true if @restaurant.recaps.where(rdate: Time.zone.at(session[:seek_date]).midnight-1.day..Time.zone.at(session[:seek_date]).midnight).all.size == 0
+    @todays_recap = @restaurant.recaps.where(rdate: Time.zone.at(session[:seek_date]).midnight-1.day..Time.zone.at(session[:seek_date]).midnight).all.last if @restaurant.recaps.where(rdate: Time.zone.at(session[:seek_date]).midnight-1.day..Time.zone.at(session[:seek_date]).midnight).all.size > 0
   end
 
   # GET /restaurants/new
@@ -77,13 +77,13 @@ class RestaurantsController < ApplicationController
 
   # pushes date back by one
   def seek_bwd
-    session[:seek_date] = (Time.at(session[:seek_date]) - 1.day ).to_i
+    session[:seek_date] = (Time.zone.at(session[:seek_date]) - 1.day ).to_i
     redirect_to :back
   end
 
   # pushes date forward by one
-  def seek_bwd
-    session[:seek_date] = (Time.at(session[:seek_date]) + 1.day ).to_i
+  def seek_fwd
+    session[:seek_date] = (Time.zone.at(session[:seek_date]) + 1.day ).to_i
     redirect_to :back
   end
 
@@ -103,11 +103,28 @@ class RestaurantsController < ApplicationController
 
   def inventory
     @restaurant = Restaurant.find(params[:id])
+    session[:seek_date] = Time.zone.parse(params[:seek_date]) if params[:seek_date].present?
+    RestaurantProduct.where(restaurant_id: @restaurant.id).all.each do |rp|
+      puts "DB8 rp #{rp.id} has #{InventoryCheck.where("quantity > -1 AND restaurant_product_id = ?",rp.id).all.size} filled ICs"
+    end
+
+    # gap filling
+    logger.debug "DB8 Gap filling"
+    RestaurantProduct.where(restaurant_id: @restaurant.id).all.each do |rp|
+      range_start = session[:seek_date].midnight
+      range_end = (session[:seek_date]+1.day).midnight
+      available = InventoryCheck.where("restaurant_product_id = ? AND quantity > -1",rp.id).where(idate: range_start..range_end ).all.size
+      if available == 0
+        puts "DB8 filling #{rp.id} #{Time.zone.at(session[:seek_date])}"
+        InventoryCheck.create( restaurant_product_id: rp.id, quantity: -1, idate: Time.zone.at(session[:seek_date]) )
+      end
+    end
+
     if params[:new_restaurant_product].present?
       product = Product.create( name: params[:new_restaurant_product])
       restaurant_product = RestaurantProduct.create(product_id: product.id, restaurant_id: @restaurant.id)
-      InventoryCheck.create( restaurant_product_id: restaurant_product.id, quantity: 0, idate: Time.at(session[:seek_date]) )
-      redirect_to restaurant_path(@restaurant)+"/inventory/"+params[:date]
+      InventoryCheck.create( restaurant_product_id: restaurant_product.id, quantity: 0, idate: Time.zone.at(session[:seek_date]) )
+      redirect_to restaurant_path(@restaurant)+"/inventory/"+params[:seek_date]
     end
     
   end

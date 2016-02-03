@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   get '/restaurants/:id/seek_n_show/:seek_date' => 'restaurants#seek_n_show'
   post '/seek' => 'restaurants#seek'
-  get '/restaurants/:id/inventory/:date' => 'restaurants#inventory'
+  get '/restaurants/:id/inventory/:seek_date' => 'restaurants#inventory'
   resources :restaurants
   get '/restaurants/:id/seek_bwd' => 'restaurants#seek_bwd'
   get '/restaurants/:id/seek_fwd' => 'restaurants#seek_fwd'

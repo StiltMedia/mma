@@ -8,6 +8,6 @@ class Restaurant < ActiveRecord::Base
   def inventory_filled?(the_date)
     range_start = Time.zone.parse(the_date).midnight
     range_end = (Time.zone.parse(the_date)+1.day).midnight
-    InventoryCheck.where(idate: range_start..range_end).all.size>0
+    InventoryCheck.where(idate: range_start..range_end).where("quantity > -1").all.size>0
   end
 end

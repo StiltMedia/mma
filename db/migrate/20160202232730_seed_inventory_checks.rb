@@ -25,8 +25,8 @@ class SeedInventoryChecks < ActiveRecord::Migration
       range_start = the_date.midnight
       range_end = (the_date+1.day).midnight
       if (rand(1..2)==1)
-        puts "About to remove #{InventoryCheck.where(idate: range_start..range_end).all.size} items"
-        InventoryCheck.where(idate: range_start..range_end).destroy_all
+        puts "About to negate #{InventoryCheck.where(idate: range_start..range_end).all.size} items"
+        InventoryCheck.where(idate: range_start..range_end).update_all(quantity: -1)
       end
       the_date = the_date + 1.day
     end
