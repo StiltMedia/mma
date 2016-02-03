@@ -1,0 +1,4 @@
+class AddRestaurantProductIdToInventoryCheck < ActiveRecord::Migration
+  def change
+  end
+end

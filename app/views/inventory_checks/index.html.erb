@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Inventory Checks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Idate</th>
+      <th>Restaurant</th>
+      <th>Product</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inventory_checks.each do |inventory_check| %>
+      <tr>
+        <td><%= inventory_check.quantity %></td>
+        <td><%= inventory_check.idate %></td>
+        <td><%= inventory_check.restaurant %></td>
+        <td><%= inventory_check.product %></td>
+        <td><%= link_to 'Show', inventory_check %></td>
+        <td><%= link_to 'Edit', edit_inventory_check_path(inventory_check) %></td>
+        <td><%= link_to 'Destroy', inventory_check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inventory check', new_inventory_check_path %>

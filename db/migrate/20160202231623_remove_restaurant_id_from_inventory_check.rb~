@@ -1,0 +1,4 @@
+class RemoveRestaurantIdFromInventoryCheck < ActiveRecord::Migration
+  def change
+  end
+end

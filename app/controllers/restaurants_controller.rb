@@ -24,9 +24,6 @@ class RestaurantsController < ApplicationController
     @recap_pending = nil
     @recap_pending = true if @restaurant.recaps.where(rdate: Time.at(session[:seek_date]).midnight-1.day..Time.at(session[:seek_date]).midnight).all.size == 0
     @todays_recap = @restaurant.recaps.where(rdate: Time.at(session[:seek_date]).midnight-1.day..Time.at(session[:seek_date]).midnight).all.last if @restaurant.recaps.where(rdate: Time.at(session[:seek_date]).midnight-1.day..Time.at(session[:seek_date]).midnight).all.size > 0
-
-    #@inventory_pending = nil
-    #@inventory_pending = true if @restaurant.inventories.where(updated_at: Time.at(session[:seek_date]).midnight-1.day..Time.at(session[:seek_date]).midnight).all.size == 0
   end
 
   # GET /restaurants/new
@@ -98,6 +95,23 @@ class RestaurantsController < ApplicationController
     render json: { status: "ok" }
   end
 
+  # does almost same as above method
+  def seek_n_show
+    session[:seek_date] = Time.strptime( params[:seek_date],"%Y-%m-%d").to_i
+    redirect_to restaurant_path( Restaurant.find(params[:id]) )
+  end
+
+  def inventory
+    @restaurant = Restaurant.find(params[:id])
+    if params[:new_restaurant_product].present?
+      product = Product.create( name: params[:new_restaurant_product])
+      restaurant_product = RestaurantProduct.create(product_id: product.id, restaurant_id: @restaurant.id)
+      InventoryCheck.create( restaurant_product_id: restaurant_product.id, quantity: 0, idate: Time.at(session[:seek_date]) )
+      redirect_to restaurant_path(@restaurant)+"/inventory/"+params[:date]
+    end
+    
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant

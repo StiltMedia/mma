@@ -68,12 +68,12 @@
                 <h3>RECAP</h3>
                 </a>
             </div>
-            <div class="restaurant-button <%= @restaurant.inventory_filled?("foo") ? "" : "active"%>">
-                <a href="/inventories?rid=<%=@restaurant.id%>">
+            <div class="restaurant-button <%= @restaurant.inventory_filled?( Time.zone.at(@seek_date).strftime("%Y-%m-%d") ) ? "" : "active"%>">
+              <%= link_to(restaurant_path+"/inventory/"+Time.zone.at(@seek_date).strftime("%Y-%m-%d") ) do %>
                 <img class="svg" src="<%=asset_path("icons/svg_inventory.svg")%>" alt="icon_inventory">
 
                 <h3>INVENTORY</h3>
-                </a>
+	      <%end%>
             </div>
         </div>
 

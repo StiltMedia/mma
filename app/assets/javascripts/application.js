@@ -24,6 +24,17 @@ $(document).on('ready page:load', function () {
 
 $("document").ready(function(){
 
+
+    $(".inventory-index-page .add-product").on("click", function() {
+      console.log("DB8 clicked");
+      var product = prompt("Enter the name of the inventory product you want to add:");
+      if (product) {
+        window.location.replace( window.location+"?new_restaurant_product="+ encodeURIComponent(product) );
+      }
+      //$.ajax({ url: '/inventories', type: 'post', data: { inventory: { product: product, quantity: '0', restaurant_id: $("#hidden-restaurant-id").val() } } })
+
+    });
+
     $("#file-upload-3").change(function (event){
       if (this.files[0].size >= 4194304) {
         alert('File is too large (>4MB). Please try again.');
@@ -61,6 +72,8 @@ function show_dialog_saving() {
 
 
 $(function() {
+
+
     // search page overlay
     $('.footer-nav li.search a, .account-box a.search').on('click', function () {
         $('.search-popup').addClass('active');

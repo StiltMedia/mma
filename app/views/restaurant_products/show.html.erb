@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Restaurant:</strong>
+  <%= @restaurant_product.restaurant %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @restaurant_product.product %>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_product_path(@restaurant_product) %> |
+<%= link_to 'Back', restaurant_products_path %>

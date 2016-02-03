@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130220821) do
+ActiveRecord::Schema.define(version: 20160202232730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "inventory_checks", force: :cascade do |t|
+    t.integer  "quantity"
+    t.datetime "idate"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "restaurant_product_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -44,6 +52,16 @@ ActiveRecord::Schema.define(version: 20160130220821) do
 
   add_index "recaps", ["restaurant_id"], name: "index_recaps_on_restaurant_id", using: :btree
   add_index "recaps", ["user_id"], name: "index_recaps_on_user_id", using: :btree
+
+  create_table "restaurant_products", force: :cascade do |t|
+    t.integer  "restaurant_id"
+    t.integer  "product_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "restaurant_products", ["product_id"], name: "index_restaurant_products_on_product_id", using: :btree
+  add_index "restaurant_products", ["restaurant_id"], name: "index_restaurant_products_on_restaurant_id", using: :btree
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
@@ -112,6 +130,8 @@ ActiveRecord::Schema.define(version: 20160130220821) do
   add_foreign_key "rcomments", "users"
   add_foreign_key "recaps", "restaurants"
   add_foreign_key "recaps", "users"
+  add_foreign_key "restaurant_products", "products"
+  add_foreign_key "restaurant_products", "restaurants"
   add_foreign_key "specials", "restaurants"
   add_foreign_key "thinktanks", "users"
   add_foreign_key "ttcomments", "thinktanks"

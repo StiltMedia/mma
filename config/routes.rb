@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :restaurant_products
+  resources :inventory_checks
   resources :rcomments
   resources :recaps
   resources :ttcomments
@@ -31,7 +33,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/restaurants/:id/seek_n_show/:seek_date' => 'restaurants#seek_n_show'
   post '/seek' => 'restaurants#seek'
+  get '/restaurants/:id/inventory/:date' => 'restaurants#inventory'
   resources :restaurants
   get '/restaurants/:id/seek_bwd' => 'restaurants#seek_bwd'
   get '/restaurants/:id/seek_fwd' => 'restaurants#seek_fwd'

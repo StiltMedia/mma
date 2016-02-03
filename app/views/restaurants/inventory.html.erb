@@ -1,0 +1,94 @@
+<input type="hidden" id="hidden-restaurant-id" value="<%=@restaurant.id%>">
+<!-- main site -->
+<section class="think-tank no-padding inventory-index-page">
+
+    <%= render "shared/header", h3_text: "BACK", back_link: restaurant_path(@restaurant)+"/seek_n_show/"+Time.zone.at(session[:seek_date]).strftime("%Y-%m-%d") %>
+
+    <!-- header container -->
+    <div class="header-container">
+        <!-- header lower-->
+        <header class="header-lower centered no-padding">
+
+            <div class="header-title text-center">
+                <h4><%= @restaurant.name.upcase %></h4>
+            </div>
+
+        </header>
+        <!-- .header lower -->
+    </div>
+    <!-- .header container -->
+
+    <!-- inventory items -->
+    <div class="inventory-items">
+
+        <% RestaurantProduct.where(restaurant_id: @restaurant.id).order(created_at: :desc).all.each do |rp| %>
+        <% range_start = Time.zone.at(session[:seek_date]).midnight
+           range_end = (Time.zone.at(session[:seek_date])+1.day).midnight
+        %>
+        <% item = InventoryCheck.where(idate: range_start..range_end, restaurant_product_id: rp.id ).all.last %>
+        <% next if !item %>
+        <!-- inventory item -->
+        <div class="inventory-item">
+
+            <div class="title">
+                <h4><%= item.restaurant_product.product.name %></h4>
+            </div>
+
+            <div class="image black-field input-group">
+                <%= best_in_place item, :quantity, activator: ".fa-edit-#{item.id}" %>
+
+            </div>
+
+            
+            <div class="">
+                <a href="javascript:void(0)" class="fa fa-edit fa-edit-<%=item.id%>"></a>
+            </div>
+
+        </div>
+        <!-- .inventory item -->
+        <% end %>
+
+    </div>
+    <!-- .inventory items -->
+
+    <!-- log in button -->
+    <div class="button text-center inventory">
+        <div class="row">
+            <div class="col-md-12 <%= "hidden" if current_user.email != "sean@example.net"%>">
+                <a class="btn btn-dark submit-special add-product" href="javascript:void(0)">
+                    ADD TO LIST (Sean)</a>
+            </div>
+        </div>
+    </div>
+    <!-- .log in button -->
+
+    <%= render "shared/footer_nav" %>
+
+</section>
+<!-- .main site -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

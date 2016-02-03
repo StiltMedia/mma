@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @inventory_check.quantity %>
+</p>
+
+<p>
+  <strong>Idate:</strong>
+  <%= @inventory_check.idate %>
+</p>
+
+<p>
+  <strong>Restaurant:</strong>
+  <%= @inventory_check.restaurant %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @inventory_check.product %>
+</p>
+
+<%= link_to 'Edit', edit_inventory_check_path(@inventory_check) %> |
+<%= link_to 'Back', inventory_checks_path %>
