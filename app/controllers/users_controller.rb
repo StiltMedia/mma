@@ -49,6 +49,7 @@ class UsersController < ApplicationController
       picture = Magick::Image.from_blob(@user.picture)[0]
       picture.auto_orient!
       picture.resize_to_fit!(300, 300)
+      picture.resize_to_fill!(300,300)
       @user.picture = picture.to_blob
       @user.save
       redirect_to :back and return
