@@ -45,7 +45,7 @@
         <div class="post">
             <div class="post-title">
                 <% if search_result.class.to_s == "Special" %>
-                  <h6><%= gist %></h6>
+                  <h6><a href="<%= url_for(search_result)%>"><%= gist %></a></h6>
                 <% else %>
                   <h6><a href="<%= url_for(search_result)%>"><%= gist %></a></h6>
                 <% end %>
