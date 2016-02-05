@@ -54,7 +54,7 @@
     <!-- log in button -->
     <div class="button text-center inventory">
         <div class="row">
-            <div class="col-md-12 <%= "hidden" if current_user.email != "sean@example.net"%>">
+            <div class="col-md-12 <%= "hidden" if ! current_user.admin %>">
                 <a class="btn btn-dark submit-special add-product" href="javascript:void(0)">
                     ADD TO LIST (Sean)</a>
             </div>
