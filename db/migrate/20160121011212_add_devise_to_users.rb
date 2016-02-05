@@ -55,6 +55,6 @@ class AddDeviseToUsers < ActiveRecord::Migration
     # NOSEEDS emails.each do |email|
     # NOSEEDS   User.new(email: email, password: "supersonic123").save(:validate => false)
     # NOSEEDS end
-    User.new(email: "sean@example.net", password: "supersonic123", admin: true).save(:validate => false)
+    User.new(email: "sean@example.net", password: "supersonic123").save(:validate => false)
   end
 end
