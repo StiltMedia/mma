@@ -13,10 +13,10 @@ Rails.application.config.assets.precompile += %w( search.js base.css pages.css b
 # Rails.application.config.assets.precompile += [/.*\.png/,/.*\.ico/,/.*\.jpg/,/.*\.js/,/.*\.scss/,/.*\.css/]
 # Rails.application.config.assets.precompile += [/profile.*/]
 
-Rails.application.config.assets.precompile += [/.*\.png/,/.*\.ico/,/.*\.jpg/]
+
 # Rails.application.config.assets.precompile += [/profile.*/]
 
-
+Rails.application.config.assets.precompile += %w( bootstrap.min.css zabuto_calendar.min.css style.css bootstrap.min.js zabuto_calendar.min.js custom.js)
 
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 Rails.application.config.assets.precompile += ['angle/themes/theme-a.css',
@@ -99,3 +99,5 @@ Rails.application.config.assets.precompile += [
     'business_units.css',
     'users.css'
 ]
+
+Rails.application.config.assets.precompile += [/.*\.png/,/.*\.ico/,/.*\.jpg/]
