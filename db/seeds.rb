@@ -6,13 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.all.each do |user|
-  user.picture = (open("app/assets/images/chef-#{rand(2..6)}.jpg", 'rb') { |f| f.read })
-  user.save
-end
-
-Thinktank.all.each do |thinktank|
-  thinktank.picture = (open("app/assets/images/thinktank-#{rand(2..6)}.jpg", 'rb') { |f| f.read })
-  thinktank.save
-end
+# NOSEEDS User.all.each do |user|
+# NOSEEDS   user.picture = (open("app/assets/images/chef-#{rand(2..6)}.jpg", 'rb') { |f| f.read })
+# NOSEEDS   user.save
+# NOSEEDS end
+# NOSEEDS 
+# NOSEEDS Thinktank.all.each do |thinktank|
+# NOSEEDS   thinktank.picture = (open("app/assets/images/thinktank-#{rand(2..6)}.jpg", 'rb') { |f| f.read })
+# NOSEEDS   thinktank.save
+# NOSEEDS end
 

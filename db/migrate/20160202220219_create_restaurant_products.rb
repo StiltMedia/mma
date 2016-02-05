@@ -8,10 +8,10 @@ class CreateRestaurantProducts < ActiveRecord::Migration
   end
 
   def data
-    Restaurant.all.each do |r|
-      Product.all.sample( rand(3..20)).each do |p|
-        r.products << p
-      end
-    end
+    # NOSEEDS Restaurant.all.each do |r|
+    # NOSEEDS   Product.all.sample( rand(3..20)).each do |p|
+    # NOSEEDS     r.products << p
+    # NOSEEDS   end
+    # NOSEEDS end
   end
 end

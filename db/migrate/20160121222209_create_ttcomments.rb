@@ -10,11 +10,11 @@ class CreateTtcomments < ActiveRecord::Migration
   end
 
   def data
-    rand(1..20).times do
-      Ttcomment.create!(ttcomment: Faker::Hipster.sentences(rand(1..10)).join(" "),
-        user_id: User.all.sample(1)[0].id,
-        thinktank_id: Thinktank.all.sample(1)[0].id
-      )
-    end
+    # NOSEEDS rand(1..20).times do
+    # NOSEEDS   Ttcomment.create!(ttcomment: Faker::Hipster.sentences(rand(1..10)).join(" "),
+    # NOSEEDS     user_id: User.all.sample(1)[0].id,
+    # NOSEEDS     thinktank_id: Thinktank.all.sample(1)[0].id
+    # NOSEEDS   )
+    # NOSEEDS end
   end
 end

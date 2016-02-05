@@ -7,10 +7,10 @@ class CreateProducts < ActiveRecord::Migration
   end
 
   def data
-    100.times do
-      Product.create(
-        name: Faker::Commerce.product_name
-      )
-    end
+    # NOSEEDS 100.times do
+    # NOSEEDS   Product.create(
+    # NOSEEDS     name: Faker::Commerce.product_name
+    # NOSEEDS   )
+    # NOSEEDS end
   end
 end

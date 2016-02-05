@@ -3,33 +3,33 @@ class SeedInventoryChecks < ActiveRecord::Migration
   end
 
   def data
-    RestaurantProduct.all.each do |rp|
-      start_date = Time.parse("2015-06-01T00:00:00-05:00")
-      the_date = start_date
-      (365*1).times do
-        if ( rand(1..3)==1 )
-          InventoryCheck.create(
-            restaurant_product_id: rp.id,
-            quantity: rand(0..100),
-            idate: the_date
-          )
-        end
-        the_date = the_date + 1.day
-      end
-    end
-
-    # remove all inventorychecks for some random days
-    start_date = Time.parse("2015-06-01T00:00:00-05:00")
-    the_date = start_date
-    (365*1).times do
-      range_start = the_date.midnight
-      range_end = (the_date+1.day).midnight
-      if (rand(1..2)==1)
-        puts "About to negate #{InventoryCheck.where(idate: range_start..range_end).all.size} items"
-        InventoryCheck.where(idate: range_start..range_end).update_all(quantity: -1)
-      end
-      the_date = the_date + 1.day
-    end
+    # NOSEEDS RestaurantProduct.all.each do |rp|
+    # NOSEEDS   start_date = Time.parse("2015-06-01T00:00:00-05:00")
+    # NOSEEDS   the_date = start_date
+    # NOSEEDS   (365*1).times do
+    # NOSEEDS     if ( rand(1..3)==1 )
+    # NOSEEDS       InventoryCheck.create(
+    # NOSEEDS         restaurant_product_id: rp.id,
+    # NOSEEDS         quantity: rand(0..100),
+    # NOSEEDS         idate: the_date
+    # NOSEEDS       )
+    # NOSEEDS     end
+    # NOSEEDS     the_date = the_date + 1.day
+    # NOSEEDS   end
+    # NOSEEDS end
+    # NOSEEDS 
+    # NOSEEDS # remove all inventorychecks for some random days
+    # NOSEEDS start_date = Time.parse("2015-06-01T00:00:00-05:00")
+    # NOSEEDS the_date = start_date
+    # NOSEEDS (365*1).times do
+    # NOSEEDS   range_start = the_date.midnight
+    # NOSEEDS   range_end = (the_date+1.day).midnight
+    # NOSEEDS   if (rand(1..2)==1)
+    # NOSEEDS     puts "About to negate #{InventoryCheck.where(idate: range_start..range_end).all.size} items"
+    # NOSEEDS     InventoryCheck.where(idate: range_start..range_end).update_all(quantity: -1)
+    # NOSEEDS   end
+    # NOSEEDS   the_date = the_date + 1.day
+    # NOSEEDS end
     
   end
 
