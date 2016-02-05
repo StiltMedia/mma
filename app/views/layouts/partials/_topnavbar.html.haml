@@ -1,0 +1,27 @@
+/ START Top Navbar
+%nav.navbar.topnavbar{:role => "navigation"}
+  / START navbar header
+  .navbar-header
+    %a.navbar-brand{:href => "/"}
+      .tws-logo.brand-logo
+        %img.img-responsive{:alt => "App Logo", :src => "#{image_path('logo.png')}", :width => "100"}/
+      /
+        <div class="brand-logo-collapsed">
+        <img src="<haml_loud> image_path(&#39;angle/logo-single.png&#39;) </haml_loud>" alt="App Logo" class="img-responsive" />
+        </div>
+  / END navbar header
+  / START Nav wrapper
+  .nav-wrapper
+    / Left navbar
+    = render partial: 'layouts/partials/navigation_left'
+    / Right Navbar
+    = render partial: 'layouts/partials/navigation_right'
+  / END Nav wrapper
+  / START Search form
+  %form.navbar-form{:action => "search.html", :role => "search"}
+    .form-group.has-feedback
+      %input.form-control{:placeholder => "Type and hit enter ...", :type => "text"}/
+      .fa.fa-times.form-control-feedback{"data-search-dismiss" => ""}
+    %button.hidden.btn.btn-default{:type => "submit"} Submit
+  / END Search form
+/ END Top Navbar

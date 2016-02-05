@@ -1,0 +1,18 @@
+/* line 8, /Users/oystersauce8/work_guigo/mma/app/assets/stylesheets/thinktanks.scss */
+.commenter-image {
+  max-width: 50px;
+}
+
+/* line 14, /Users/oystersauce8/work_guigo/mma/app/assets/stylesheets/thinktanks.scss */
+.thinktank-show-page input[type=submit] {
+  border-radius: 2px;
+  border: 0;
+  zfont-family: Tahoma;
+  background: #f4f4f4;
+}
+
+/* line 23, /Users/oystersauce8/work_guigo/mma/app/assets/stylesheets/thinktanks.scss */
+.red-delete {
+  background-color: red !important;
+  color: black !important;
+}

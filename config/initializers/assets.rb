@@ -8,8 +8,11 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
- Rails.application.config.assets.precompile += %w( search.js )
- Rails.application.config.assets.precompile += [/.*\.png/,/.*\.ico/,/.*\.jpg/,/.*\.js/,/.*\.scss/,/.*\.css/]
- Rails.application.config.assets.precompile += [/profile.*/]
+Rails.application.config.assets.precompile += %w( search.js base.css pages.css base.js pages.js)
+# Rails.application.config.assets.precompile += [/.*\.png/,/.*\.ico/,/.*\.jpg/,/.*\.js/,/.*\.scss/,/.*\.css/]
+# Rails.application.config.assets.precompile += [/profile.*/]
+
+Rails.application.config.assets.precompile += [/.*\.png/,/.*\.ico/,/.*\.jpg/]
+# Rails.application.config.assets.precompile += [/profile.*/]
 
 

@@ -1,0 +1,37 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
+    %meta{:content => "Bootstrap Admin App + Ruby on Rails", :name => "description"}/
+    %meta{:content => "app, responsive, jquery, bootstrap, dashboard, admin", :name => "keywords"}/
+    %title Angle - Bootstrap Admin Template
+    / =============== VENDOR STYLES ===============
+    = stylesheet_link_tag 'base'
+    / =============== VIEW VENDOR STYLES ===============
+    = stylesheet_link_tag params[:controller]
+    / =============== APP STYLES ===============
+    = stylesheet_link_tag 'application', media: 'all', id: "maincss"
+    = csrf_meta_tags
+  %body
+    .wrapper
+      / top navbar
+      %header.topnavbar-wrapper
+        = render partial: "layouts/partials/topnavbar"
+      / Main section
+      %section
+        / Page content
+        .content-wrapper
+          = render 'layouts/messages'
+          = yield
+      / Page footer
+      %footer
+        = render partial: "layouts/partials/footer"
+    / =============== VENDOR SCRIPTS ===============
+    = javascript_include_tag 'base'
+    / =============== VIEW VENDOR SCRIPTS ===============
+    = javascript_include_tag params[:controller]
+    / =============== APP SCRIPTS ===============
+    = javascript_include_tag 'application'
+    = yield :body_area

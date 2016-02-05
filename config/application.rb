@@ -24,5 +24,7 @@ module Mma
     config.active_record.raise_in_transactional_callbacks = true
 
     config.time_zone = 'Eastern Time (US & Canada)'
+
+    Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
   end
 end

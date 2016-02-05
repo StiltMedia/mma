@@ -1,0 +1,21 @@
+
+%ul.nav.navbar-nav.navbar-right{:class => ("invisible" unless user_signed_in?)}
+  / Search icon
+  %li
+    %a{"data-search-open" => "", :href => "#"}
+      %em.icon-magnifier
+  / START Alert menu
+  %li.dropdown.dropdown-list.business-units
+    %a.business-units-dropdown{"data-toggle" => "dropdown", :href => "#"}
+      Business Unit   
+      %em.fa.fa-angle-down
+    / START Dropdown menu
+    %ul.business-units-dropdown.dropdown-menu.animated.flipInX
+      %li
+        / START list group
+        .list-group
+          / list items will be filled here with ajax
+
+        / END list group
+    / END Dropdown menu
+  / END Alert menu

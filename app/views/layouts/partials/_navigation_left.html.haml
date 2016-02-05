@@ -1,0 +1,6 @@
+%ul.nav.navbar-nav
+  %li
+    %a.tws-logo.hidden-xs{:href => "/"}
+      %img.img-responsive{:alt => "App Logo", :src => "#{image_path('logo.png')}", :width => "100"}/
+  = render partial: 'layouts/partials/nav_links_menu'
+  = render partial: 'layouts/partials/nav_links_for_auth'

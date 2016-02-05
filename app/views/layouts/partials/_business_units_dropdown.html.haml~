@@ -1,0 +1,10 @@
+          - business_units.each do |business_unit|
+            / list item
+            %a.list-group-item{:href => "#"}
+              .media-box
+                .pull-left
+                  %em.fa.fa-building-o.fa-2x.text-info
+                .media-box-body.clearfix
+                  %p.m0 New followers
+                  %p.m0.text-muted
+                    %small bu

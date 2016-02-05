@@ -1,0 +1,24 @@
+- business_units.each do |business_unit|
+  / list item
+  %a.list-group-item{:href => "/set_context?id=#{business_unit.id}"}
+    .media-box
+      .pull-left
+        %em.fa.fa-building-o.fa-2x.text-info
+      .media-box-body.clearfix
+        - if session[:current_business_unit] && business_unit.id == session[:current_business_unit]['id']
+          %p.m0= business_unit.name
+        - else
+          %p.m0.text-muted= business_unit.name
+        %p.m0.text-muted
+          %small business unit
+
+- if business_units.empty?
+  / list item
+  %a.list-group-item
+    .media-box
+      .pull-left
+        %em.fa.fa-building-o.fa-2x.text-info
+      .media-box-body.clearfix
+        %p.m0 None
+        %p.m0.text-muted
+          %small &nbsp;

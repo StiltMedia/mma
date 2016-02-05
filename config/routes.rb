@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/administration' => 'pages#administration'
   get '/restaurants/:id/seek_n_show/:seek_date' => 'restaurants#seek_n_show'
   post '/seek' => 'restaurants#seek'
   get '/restaurants/:id/inventory/:seek_date' => 'restaurants#inventory'
