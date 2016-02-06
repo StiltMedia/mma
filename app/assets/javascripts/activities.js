@@ -1,6 +1,6 @@
 
 
 
-$(document).on('ready page:load', function () {    
+$(document).on('ready', function () {    
     $('#activity-datatable').DataTable();
 });
