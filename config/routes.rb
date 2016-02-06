@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :activities
   resources :restaurant_products
   resources :inventory_checks
   resources :rcomments

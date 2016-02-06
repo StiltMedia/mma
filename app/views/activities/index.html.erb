@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Activities</h1>
+
+
+<table id="activity-datatable" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Time</th>
+                <th>Username</th>
+                <th>IP</th>		
+                <th>Geo Location</th>
+                <th>Activity</th>
+                <th>Details</th>
+                <th>Browser</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Time</th>
+                <th>Username</th>
+	        <th>IP</th>		
+                <th>Geo Location</th>
+                <th>Activity</th>
+                <th>Details</th>
+                <th>Browser</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <% @activities.each do |activity| %>
+            <tr>
+              <td><%= activity.id %></td>
+              <td><%= activity.atime %></td>
+              <td><%= activity.ip %></td>
+              <td><%= activity.username %></td>
+              <td><%= activity.geo_location %></td>
+              <td><%= activity.activity %></td>
+              <td><%= activity.details %></td>
+              <td><%= activity.browser_os %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>

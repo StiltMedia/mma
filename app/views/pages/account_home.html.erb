@@ -73,3 +73,13 @@
 
 </section>
 <!-- .main site -->
+
+
+<%
+   Activity.create(activity: "hit /pages/account_home",
+   atime: Time.now(),
+   username: (current_user.email rescue nil),
+   ip: request.remote_ip,
+   browser_os: request.env['HTTP_USER_AGENT'],
+   geo_location: "Unavailable" )
+%>

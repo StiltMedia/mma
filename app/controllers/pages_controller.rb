@@ -6,6 +6,8 @@ class PagesController < ApplicationController
   end
 
   def landing
+
+
     if user_signed_in?
       redirect_to pages_account_home_path
     else
@@ -14,6 +16,7 @@ class PagesController < ApplicationController
   end
 
   def login
+
   end
 
   def account_home

@@ -6,13 +6,14 @@
     %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
     %meta{:content => "Bootstrap Admin App + Ruby on Rails", :name => "description"}/
     %meta{:content => "app, responsive, jquery, bootstrap, dashboard, admin", :name => "keywords"}/
-    %title Angle - Bootstrap Admin Template
+    %title MMA - Administration
     / =============== VENDOR STYLES ===============
     = stylesheet_link_tag 'base'
     / =============== VIEW VENDOR STYLES ===============
     = stylesheet_link_tag params[:controller]
     / =============== APP STYLES ===============
     = stylesheet_link_tag 'application', media: 'all', id: "maincss"
+    = stylesheet_link_tag "//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css"
     = csrf_meta_tags
   %body
     .wrapper
@@ -31,8 +32,7 @@
     / =============== VENDOR SCRIPTS ===============
     = javascript_include_tag 'base'
     / =============== VIEW VENDOR SCRIPTS ===============
-    = javascript_include_tag params[:controller]
     / =============== APP SCRIPTS ===============
     = javascript_include_tag 'application'
-
+    = javascript_include_tag "https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"
 

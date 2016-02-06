@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @activity.activity %>
+</p>
+
+<p>
+  <strong>Ip:</strong>
+  <%= @activity.ip %>
+</p>
+
+<p>
+  <strong>Geo location:</strong>
+  <%= @activity.geo_location %>
+</p>
+
+<p>
+  <strong>Browser os:</strong>
+  <%= @activity.browser_os %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @activity.details %>
+</p>
+
+<p>
+  <strong>Atime:</strong>
+  <%= @activity.atime %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @activity.username %>
+</p>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

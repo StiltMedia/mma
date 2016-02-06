@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  activity: MyString
+  ip: MyString
+  geo_location: MyString
+  browser_os: MyString
+  details: MyText
+  atime: 2016-02-05 22:07:19
+  username: MyString
+
+two:
+  activity: MyString
+  ip: MyString
+  geo_location: MyString
+  browser_os: MyString
+  details: MyText
+  atime: 2016-02-05 22:07:19
+  username: MyString

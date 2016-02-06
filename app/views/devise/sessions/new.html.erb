@@ -60,3 +60,12 @@ SIGN UP NOW
 <a class="link link-small" href="/pages/coming_soon"> Need Help?</a>
 </div></div></div><!--sign up link-->
 </div></section><!--.main site-->
+
+<%
+   Activity.create(activity: "hit /pages/login",
+   atime: Time.now(),
+   username: (current_user.email rescue nil),
+   ip: request.remote_ip,
+   browser_os: request.env['HTTP_USER_AGENT'],
+   geo_location: "Unavailable" )
+%>
