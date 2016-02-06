@@ -88,7 +88,7 @@
    Activity.create(activity: "hit /restaurants/#{@restaurant.id}",
    atime: Time.now(),
    username: (current_user.email rescue nil),
-   ip: request.remote_ip,
+   ip: Geocoder.search(request.remote_ip).first.city,
    browser_os: request.env['HTTP_USER_AGENT'],
    geo_location: "Unavailable" )
 %>

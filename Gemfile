@@ -60,3 +60,4 @@ gem 'rails_12factor', group: :production
 gem "rmagick"
 gem "haml"
 gem 'best_in_place', '~> 3.0.1'
+gem 'geocoder'
