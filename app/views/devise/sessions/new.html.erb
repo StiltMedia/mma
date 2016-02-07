@@ -65,7 +65,8 @@ SIGN UP NOW
    Activity.create(activity: "hit /pages/login",
    atime: Time.now(),
    username: (current_user.email rescue nil),
-   ip: Geocoder.search(request.remote_ip).first.city,
+   ip: request.remote_ip,
+   geo_location: Geocoder.search(request.remote_ip).first.city,
    browser_os: request.env['HTTP_USER_AGENT'],
-   geo_location: "Unavailable" )
+   )
 %>
