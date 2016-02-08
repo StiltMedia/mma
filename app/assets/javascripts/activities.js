@@ -2,5 +2,7 @@
 
 
 $(document).on('ready', function () {    
-    $('#activity-datatable').DataTable();
+    $('#activity-datatable').DataTable( {
+        "order": [[ 0, "desc" ]]
+    });
 });
