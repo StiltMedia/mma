@@ -66,7 +66,7 @@ SIGN UP NOW
    atime: Time.now(),
    username: (current_user.email rescue nil),
    ip: request.remote_ip,
-   geo_location: Geocoder.search(request.remote_ip).first.city rescue "",
+   geo_location: Geocoder.search(request.remote_ip).first.city,
    browser_os: request.env['HTTP_USER_AGENT'],
-   )
+   ) rescue nil
 %>
