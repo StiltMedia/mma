@@ -61,3 +61,4 @@ gem "rmagick"
 gem "haml"
 gem 'best_in_place', '~> 3.0.1'
 gem 'geocoder'
+gem 'rollbar', '~> 2.8.0'

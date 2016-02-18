@@ -81,5 +81,5 @@
    username: (current_user.email rescue nil),
    ip: request.remote_ip,
    browser_os: request.env['HTTP_USER_AGENT'],
-   geo_location: Geocoder.search(request.remote_ip).first.city ) rescue nil
+   geo_location: request.remote_ip )
 %>
