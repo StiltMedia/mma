@@ -3,7 +3,6 @@ Meat Market App
 
 
 
-
 app name is mma
 heroku staging app name is mma-staging-01 
 
