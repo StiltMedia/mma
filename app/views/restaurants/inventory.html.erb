@@ -35,14 +35,13 @@
             </div>
 
             <div class="image black-field input-group">
-                <%= best_in_place item, :quantity, activator: ".fa-edit-#{item.id}" %>
-
+                <%= best_in_place item, :quantity, activator: ".fa-edit-#{item.id}", :ok_button => "ok", :cancel_button => "cancel"  %>
+                
             </div>
+            <i class="fa fa-edit fa-edit-<%=item.id%>" style="cursor: pointer;">edit</i>
 
             
-            <div class="">
-                <a href="javascript:void(0)" class="fa fa-edit fa-edit-<%=item.id%>"></a>
-            </div>
+
 
         </div>
         <!-- .inventory item -->

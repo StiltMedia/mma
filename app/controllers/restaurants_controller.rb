@@ -103,7 +103,7 @@ class RestaurantsController < ApplicationController
 
   def inventory
     @restaurant = Restaurant.find(params[:id])
-    session[:seek_date] = Time.zone.parse(params[:seek_date]) if params[:seek_date].present?
+    session[:seek_date] = Time.zone.parse(params[:seek_date]).to_i if params[:seek_date].present?
     RestaurantProduct.where(restaurant_id: @restaurant.id).all.each do |rp|
       puts "DB8 rp #{rp.id} has #{InventoryCheck.where("quantity > -1 AND restaurant_product_id = ?",rp.id).all.size} filled ICs"
     end
@@ -111,8 +111,8 @@ class RestaurantsController < ApplicationController
     # gap filling
     logger.debug "DB8 Gap filling"
     RestaurantProduct.where(restaurant_id: @restaurant.id).all.each do |rp|
-      range_start = session[:seek_date].midnight
-      range_end = (session[:seek_date]+1.day).midnight
+      range_start = Time.zone.at(session[:seek_date]).midnight
+      range_end = (Time.zone.at(session[:seek_date])+1.day).midnight
       available = InventoryCheck.where("restaurant_product_id = ? AND quantity > -1",rp.id).where(idate: range_start..range_end ).all.size
       if available == 0
         puts "DB8 filling #{rp.id} #{Time.zone.at(session[:seek_date])}"
