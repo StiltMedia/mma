@@ -36,7 +36,7 @@ $(document).on('ready page:load', function () {
       this.value = null;
       return true;
     }
-    $('#saving-3').modal('show');
+    //$('#saving-3').modal('show');
     //$(this).closest('form').submit();
   });
 
