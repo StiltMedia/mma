@@ -28,6 +28,8 @@
     <!-- .header container -->
 
 
+    <!-- posts -->
+    <div class="posts">
     <% @search_results.shuffle.each do |search_result| %>
     <%
       gist = ""
@@ -39,15 +41,14 @@
         gist = truncate(search_result.title + " " + search_result.thinktank)
       end
     %>
-    <!-- posts -->
-    <div class="posts">
+        <a href="<%= url_for(search_result)%>">
         <!-- post -->
         <div class="post">
             <div class="post-title">
                 <% if search_result.class.to_s == "Special" %>
-                  <h6><a href="<%= url_for(search_result)%>"><%= gist %></a></h6>
+                  <h6><%= gist %></h6>
                 <% else %>
-                  <h6><a href="<%= url_for(search_result)%>"><%= gist %></a></h6>
+                  <h6><%= gist %></h6>
                 <% end %>
 
                 <div class="post-meta">
@@ -60,10 +61,11 @@
             </div>
         </div>
         <!-- .post -->
-    </div>
+        </a>
+
     <!-- posts -->
     <% end %>
-
+    </div>
 
     <% if @search_results.empty? %>
     <!-- posts -->
