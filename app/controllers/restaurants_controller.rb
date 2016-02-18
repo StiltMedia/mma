@@ -20,10 +20,10 @@ class RestaurantsController < ApplicationController
       session[:seek_date] = Time.zone.now().to_i
       @seek_date = session[:seek_date]
     end
-
+    logger.debug "DB8 session[:seek_date] was #{session[:seek_date]} @seek_date was #{@seek_date}"
     @recap_pending = nil
-    @recap_pending = true if @restaurant.recaps.where(rdate: Time.zone.at(session[:seek_date]).midnight-1.day..Time.zone.at(session[:seek_date]).midnight).all.size == 0
-    @todays_recap = @restaurant.recaps.where(rdate: Time.zone.at(session[:seek_date]).midnight-1.day..Time.zone.at(session[:seek_date]).midnight).all.last if @restaurant.recaps.where(rdate: Time.zone.at(session[:seek_date]).midnight-1.day..Time.zone.at(session[:seek_date]).midnight).all.size > 0
+    @recap_pending = true if @restaurant.recaps.where(rdate: Time.zone.at(@seek_date).midnight-1.day..Time.zone.at(@seek_date).midnight).all.size == 0
+    @todays_recap = @restaurant.recaps.where(rdate: Time.zone.at(@seek_date).midnight-1.day..Time.zone.at(@seek_date).midnight).all.last if @restaurant.recaps.where(rdate: Time.zone.at(@seek_date).midnight-1.day..Time.zone.at(@seek_date).midnight).all.size > 0
   end
 
   # GET /restaurants/new
