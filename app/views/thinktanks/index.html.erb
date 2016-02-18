@@ -32,11 +32,13 @@
     <div class="posts">
 
         <% Thinktank.all.order(updated_at: :desc).each do |thinktank| %>
+
+        <a href="<%= thinktank_url(thinktank)%>">
         <!-- post -->
         <div class="post">
 
             <div class="post-title">
-                <h6><%= link_to thinktank.title, thinktank %></h6>
+                <h6><%= thinktank.title %></h6>
 
                 <div class="post-meta">
                     <span class="author">Author: <%= thinktank.user.email%></span>
@@ -49,6 +51,8 @@
 
         </div>
         <!-- .post -->
+        </a>
+
         <% end %>
 
     </div>
