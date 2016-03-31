@@ -73,6 +73,7 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
     faker (1.6.1)
@@ -157,6 +158,23 @@ GEM
     rmagick (2.15.4)
     rollbar (2.8.0)
       multi_json
+    rspec-core (3.4.4)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-rails (3.4.2)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
     ruby-graphviz (1.2.2)
     sass (3.4.21)
     sass-rails (5.0.4)
@@ -225,6 +243,7 @@ DEPENDENCIES
   rails_12factor
   rmagick
   rollbar (~> 2.8.0)
+  rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   slim
@@ -234,4 +253,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
