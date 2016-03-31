@@ -15,7 +15,7 @@ class SpecialsController < ApplicationController
   end
 
   def edit
-    @restaurant = Restaurant.find(params[:rid])
+    # @restaurant = Restaurant.find(params[:rid])
   end
 
   def create
