@@ -1,90 +1,76 @@
-
 <% if notice %>
   <p id="notice"><%= notice %></p>
 <% end %>
 <!-- main site -->
 <section class="think-tank no-padding">
 
-    <%= render "shared/header", h3_text: "BACK", back_link: "/restaurants/"+@special.restaurant.id.to_s %>
+  <%= render "shared/header", h3_text: "BACK", back_link: "/restaurants/"+@special.restaurant.id.to_s %>
 
 
-    <!-- think tank inside post -->
-    <div class="screen-inner thinktank-show-page">
-        <div class="container">
+  <!-- think tank inside post -->
+  <div class="screen-inner thinktank-show-page">
+    <div class="container">
 
-            <!-- post inside -->
-            <div class="post-inside">
+      <!-- post inside -->
+      <div class="post-inside">
 
-                <!-- post image -->
-                <div class="post-image">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img src="<%=url_for(:controller => "specials", :action => "show_picture", :id => @special.id)%>" alt="post_image">
-                        </div>
-                    </div>
-                </div>
-                <!-- .post image -->
-
-                <!-- post text -->
-                <div class="text-container">
-
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <div class="post-title">
-                                <span class="author"><%= @special.title %></span>
-                            </div>
-
-                            <div class="post-meta">
-                                <h6><%= @special.restaurant.name %></h6>
-                            </div>
-
-                            <div class="post-content">
-                                <div><%= @special.special %></div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
- 
-                <!-- .post text -->
-
+        <!-- post image -->
+        <div class="post-image">
+          <div class="row">
+            <div class="col-md-12">
+              <img src="<%=url_for(:controller => "specials", :action => "show_picture", :id => @special.id)%>" alt="post_image">
             </div>
-            <!-- .post inside-->
+          </div>
         </div>
+        <!-- .post image -->
+
+        <!-- post text -->
+        <div class="text-container">
+
+          <div class="row">
+            <div class="col-md-12">
+              <a href="/specials/1/edit">
+                <div class="post-title">
+                  <span class="author"><%= @special.title %></span>
+                </div>
+                <div class="post-meta">
+                  <h6><%= @special.restaurant.name %></h6>
+                </div>
+                <div class="post-content">
+                  <div><%= @special.special %></div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- .post text -->
+
+      </div>
+      <!-- .post inside-->
+    </div>
     <br>
     <% if @is_owner %>
-    <div class="button">
-         <div class="row">
-             <div class="col-md-12">
-                 <%= link_to 'DELETE', @thinktank, method: :delete, class: "btn full red-delete", data: { confirm: 'Are you sure?' } %>
-             </div>
-         </div>
-     </div>
-    <br>
-    <div class="button">
-         <div class="row">
-             <div class="col-md-12">
-                 <%= link_to 'EDIT', edit_thinktank_path(@thinktank), class: "btn full" %>
-             </div>
-         </div>
-     </div>
-     <% end %>
+      <div class="button">
+        <div class="row">
+          <div class="col-md-12">
+            <%= link_to 'DELETE', @thinktank, method: :delete, class: "btn full red-delete", data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="button">
+        <div class="row">
+          <div class="col-md-12">
+            <%= link_to 'EDIT', edit_thinktank_path(@thinktank), class: "btn full" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
 
-    </div>
-    <!-- .think tank inside post -->
+  </div>
+  <!-- .think tank inside post -->
 
-    <%= render "shared/footer_nav" %>
+  <%= render "shared/footer_nav" %>
 
 </section>
 <!-- .main site -->
-
-
-
-
-
-
-
-
-

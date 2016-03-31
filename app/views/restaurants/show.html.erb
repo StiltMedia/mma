@@ -35,14 +35,14 @@
         <% @restaurant.specials.where(sdate: Time.at(session[:seek_date]).midnight..(Time.at(session[:seek_date])+1.day).midnight  ).each do |special| %>
         <a href="/specials/<%=special.id%>">
         <!-- special item -->
-        
+
           <div class="special-item">
               <div class="special-image">
                   <img src="<%=url_for(:controller => "specials", :action => "show_picture", :id => special.id)%>" alt="special_image">
               </div>
               <div class="special-content">
                   <h4><%= special.title %></h4>
-	  
+
                   <p><%= truncate(special.special, :omission => "...", :length => 70) %></p>
               </div>
           </div>
@@ -88,7 +88,7 @@
    Activity.create(activity: "hit /restaurants/#{@restaurant.id}",
    atime: Time.now(),
    username: (current_user.email rescue nil),
-   ip: request.remote_ip, 
+   ip: request.remote_ip,
    browser_os: request.env['HTTP_USER_AGENT'],
    geo_location: request.remote_ip )
 %>
