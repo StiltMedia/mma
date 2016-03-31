@@ -36,6 +36,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :development do
@@ -60,6 +61,5 @@ gem "font-awesome-rails"
 gem 'rails_12factor', group: :production
 gem "rmagick"
 gem "haml"
-gem 'best_in_place', '~> 3.0.1'
 gem 'geocoder'
 gem 'rollbar', '~> 2.8.0'
