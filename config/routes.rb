@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       get 'show_picture'
     end
   end
-  
+
   resources :thinktanks do
     collection do
       get 'show_picture'
@@ -38,7 +38,11 @@ Rails.application.routes.draw do
   get '/restaurants/:id/seek_n_show/:seek_date' => 'restaurants#seek_n_show'
   post '/seek' => 'restaurants#seek'
   get '/restaurants/:id/inventory/:seek_date' => 'restaurants#inventory'
-  resources :restaurants
+
+  resources :restaurants do
+    resources :specials
+  end
+
   get '/restaurants/:id/seek_bwd' => 'restaurants#seek_bwd'
   get '/restaurants/:id/seek_fwd' => 'restaurants#seek_fwd'
 

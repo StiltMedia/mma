@@ -7,15 +7,17 @@ class SpecialsController < ApplicationController
   end
 
   def show
+    @restaurant = Restaurant.find(params[:id])
   end
 
   def new
     @special = Special.new(restaurant_id: params[:rid])
-    # @restaurant = Restaurant.find(params[:rid])
+    @restaurant = Restaurant.find(params[:rid])
   end
 
   def edit
-    # @restaurant = Restaurant.find(params[:rid])
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @special = Special.find(params[:id])
   end
 
   def create
