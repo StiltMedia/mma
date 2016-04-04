@@ -7,17 +7,17 @@ class SpecialsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def new
-    @special = Special.new(restaurant_id: params[:rid])
-    @restaurant = Restaurant.find(params[:rid])
+    @special    = Special.new
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
   def edit
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @special = Special.find(params[:id])
+    @special    = Special.find(params[:id])
   end
 
   def create
@@ -25,7 +25,8 @@ class SpecialsController < ApplicationController
     @special.picture = params[:special][:picture].read if params[:special][:picture]
     respond_to do |format|
       if @special.save
-        format.html { redirect_to @special, notice: 'Special was successfully created.' }
+        format.html { redirect_to restaurant_path(params[:special][:restaurant_id]),
+                      notice: 'Special was successfully created.' }
         format.json { render :show, status: :created, location: @special }
       else
         format.html { render :new }
@@ -35,9 +36,11 @@ class SpecialsController < ApplicationController
   end
 
   def update
+    @restaurant_id = params[:restaurant_id]
+
     respond_to do |format|
       if @special.update(special_params)
-        format.html { redirect_to @special, notice: 'Special was successfully updated.' }
+        format.html { redirect_to restaurant_path @restaurant_id }
         format.json { render :show, status: :ok, location: @special }
       else
         format.html { render :edit }

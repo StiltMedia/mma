@@ -11,6 +11,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+
     # logger.debug "DB8 99 show() session id was #{session.id}"
     if session[:seek_date]
       @seek_date = session[:seek_date]
