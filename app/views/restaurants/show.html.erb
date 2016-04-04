@@ -34,8 +34,7 @@
   <div class="specials-items">
     <% @restaurant.specials.where(sdate: Time.at(session[:seek_date]).midnight..(Time.at(session[:seek_date])+1.day).midnight  ).each do |special| %>
       <%# <%= restaurant_specials_path %>
-      <a href="/specials/<%=special.id%>">
-        <%= link_to special.title, [@restaurant, special] %>
+      <a href="<%= restaurant_special_path(@restaurant, special)%>">
         <!-- special item -->
 
         <div class="special-item">

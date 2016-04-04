@@ -29,8 +29,7 @@
 
           <div class="row">
             <div class="col-md-12">
-              <a href="/specials/1/edit">
-                <%= link_to "EDIT", edit_restaurant_special_path(@restaurant, @special) %>
+              <a href="<%= edit_restaurant_special_path(@restaurant, @special) %>">
                 <div class="post-title">
                   <span class="author"><%= @special.title %></span>
                 </div>
