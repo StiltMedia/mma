@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :special %><br>
-    <%= f.text_area :special %>
-  </div>
-  <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :special %><br>
+    <%= f.text_area :special %>
   </div>
   <div class="field">
     <%= f.hidden_field :restaurant_id %>
@@ -26,8 +26,7 @@
     <%= f.hidden_field :picture %>
   </div>
   <div class="field">
-    <%= f.label :sdate %><br>
-    <%= f.datetime_select :sdate %>
+    <%= f.hidden_field :sdate %>
   </div>
   <div class="actions">
     <%= f.submit %>

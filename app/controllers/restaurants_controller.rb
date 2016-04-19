@@ -128,6 +128,18 @@ class RestaurantsController < ApplicationController
 
   end
 
+  def pre_fill_specials
+    restaurant_id = params[:id]
+    seek_date = session[:seek_date]
+    time_focus = Time.at(seek_date).strftime("%Y-%m-%d")
+
+    # binding.pry
+    # PrefillSpecialsJob.perform_later(Time.now.strftime("%Y-%m-%d"),restaurant_id)
+    PrefillSpecialsJob.perform_later(time_focus,restaurant_id)
+
+    redirect_to restaurant_path restaurant_id
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant

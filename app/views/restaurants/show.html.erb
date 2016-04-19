@@ -19,6 +19,9 @@
       <div class="calendar calendar-special">
         <a href="/pages/calendar?sel_date=<%=session[:seek_date]%>&link_back=<%=URI.escape("/restaurants/#{@restaurant.id}")%>"><img src="<%=asset_path("icons/i_calendar_dark.png")%>" alt="icon_calendar"></a>
       </div>
+      <div class="calendar calendar-special">
+        <%= link_to image_tag('icons/i_note_dark.png'), "/restaurants/#{@restaurant.id}/pre_fill_specials" %>
+      </div>
 
       <div class="add add-special">
         <%= link_to image_tag('icons/i_plus.png'), new_restaurant_special_path(@restaurant) %>

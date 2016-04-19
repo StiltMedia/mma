@@ -43,6 +43,8 @@ Rails.application.routes.draw do
     resources :specials
   end
 
+  get 'restaurants/:id/pre_fill_specials' => 'restaurants#pre_fill_specials'
+
   get '/restaurants/:id/seek_bwd' => 'restaurants#seek_bwd'
   get '/restaurants/:id/seek_fwd' => 'restaurants#seek_fwd'
 
