@@ -23,6 +23,13 @@ class RestaurantsController < ApplicationController
     @recap_pending = nil
     @recap_pending = true if @restaurant.recaps.where(rdate: Time.zone.at(@seek_date).midnight-1.day..Time.zone.at(@seek_date).midnight).all.size == 0
     @todays_recap = @restaurant.recaps.where(rdate: Time.zone.at(@seek_date).midnight-1.day..Time.zone.at(@seek_date).midnight).all.last if @restaurant.recaps.where(rdate: Time.zone.at(@seek_date).midnight-1.day..Time.zone.at(@seek_date).midnight).all.size > 0
+
+    sdate = Time.at(@seek_date).strftime("%Y-%m-%d")
+    unless @restaurant.specials_templates.where(sdate: sdate + ' 04:00').exists?
+      seek_date = session[:seek_date]
+      time_focus = Time.at(seek_date).strftime("%Y-%m-%d")
+      PrefillSpecialsJob.perform_later(time_focus,@restaurant.id)
+    end
   end
 
   # GET /restaurants/new
@@ -133,8 +140,6 @@ class RestaurantsController < ApplicationController
     seek_date = session[:seek_date]
     time_focus = Time.at(seek_date).strftime("%Y-%m-%d")
 
-    # binding.pry
-    # PrefillSpecialsJob.perform_later(Time.now.strftime("%Y-%m-%d"),restaurant_id)
     PrefillSpecialsJob.perform_later(time_focus,restaurant_id)
 
     redirect_to restaurant_path restaurant_id
