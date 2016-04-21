@@ -38,7 +38,7 @@ class SpecialsController < ApplicationController
   def update
     respond_to do |format|
       if @special.update(special_params)
-        format.html { redirect_to restaurant_path 1 }
+        format.html { redirect_to restaurant_path params[:special][:restaurant_id] }
         format.json { render :show, status: :ok, location: @special }
       else
         format.html { render :edit }

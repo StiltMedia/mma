@@ -28,7 +28,7 @@
   <div class="field">
     <%= f.hidden_field :sdate %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+     <i class="icon-ok icon-white"></i> Save
+   <% end %>
 <% end %>
