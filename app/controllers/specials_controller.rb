@@ -57,8 +57,21 @@ class SpecialsController < ApplicationController
 
   def show_picture
     @special = Special.find(params[:id])
-    @special.picture = (open("app/assets/images/specials/s_image_#{rand(1..3)}.png", 'rb') { |f| f.read }) if ! @special.picture
-    send_data @special.picture, :type => 'image/jpg',:disposition => 'inline'
+
+
+    unless @special.picture
+      @special.picture = (
+        open("app/assets/images/specials/s_image_#{rand(1..3)}.png", 'rb') { |f| f.read })
+    end
+
+    # @special.picture = Base64.encode64(@special.picture)
+
+    send_data(
+      @special.picture,
+      :filename => @special.title,
+      :type => 'image/png',
+      :disposition => 'inline'
+    )
   end
 
 
