@@ -35,21 +35,18 @@
       <%# <%= restaurant_specials_path %>
       <a href="<%= restaurant_special_path(@restaurant, special)%>">
         <!-- special item -->
-
         <div class="special-item">
           <div class="special-image">
-            <img src="<%=url_for(:controller => "specials", :action => "show_picture", :id => special.id)%>" alt="special_image">
+            <%= image_tag(special.image.profile.url) %>
           </div>
           <div class="special-content">
             <h4><%= special.title %></h4>
-
             <p><%= truncate(special.special, :omission => "...", :length => 70) %></p>
           </div>
         </div>
       </a>
       <!--.special item -->
     <% end %>
-
   </div>
   <!-- .specials items -->
 

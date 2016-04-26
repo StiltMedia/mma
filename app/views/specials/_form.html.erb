@@ -29,8 +29,9 @@
 
             <div class="col-md-12">
               <div class="input-group">
-                <%= f.file_field :picture, accept: 'image/*', id: "file-upload-3" %>
-
+                <%= f.label :image %>
+                <%= f.file_field :image %>
+                <%= f.hidden_field :image_cache %>
               </div>
             </div>
 

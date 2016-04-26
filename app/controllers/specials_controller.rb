@@ -82,6 +82,6 @@ class SpecialsController < ApplicationController
   end
 
   def special_params
-    params.require(:special).permit(:special, :title, :picture, :restaurant_id, :sdate)
+    params.require(:special).permit(:special, :title, :picture, :restaurant_id, :sdate, :image)
   end
 end
