@@ -28,17 +28,15 @@
                 <%= f.text_area :special, :class => "form-control", :placeholder => "WRITE..." %>
               </div>
             </div>
-
             <div class="col-md-12">
               <div class="input-group">
-                <%= f.file_field :picture, accept: 'image/*', id: "file-upload-3" %>
-
+                <%= f.label :image %>
+                <%= f.file_field :image %>
+                <%= f.hidden_field :image_cache %>
               </div>
             </div>
-
           </div>
         </div>
-
         <!-- log in button -->
         <div class="button">
           <div class="row">
