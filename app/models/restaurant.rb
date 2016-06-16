@@ -3,6 +3,7 @@ class Restaurant < ActiveRecord::Base
   has_many :recaps
   has_many :products, through: :restaurant_products
   has_many :restaurant_products
+  has_many :specials_templates
 
   # the_date should be in yyyy-mm-dd format
   def inventory_filled?(the_date)

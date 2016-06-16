@@ -10,20 +10,26 @@ class RestaurantsController < ApplicationController
     redirect_to "/pages/restaurants"
   end
 
-  # GET /restaurants/1
-  # GET /restaurants/1.json
   def show
-    logger.debug "DB8 99 show() session id was #{session.id}"
+
+    # logger.debug "DB8 99 show() session id was #{session.id}"
     if session[:seek_date]
       @seek_date = session[:seek_date]
     else
       session[:seek_date] = Time.zone.now().to_i
       @seek_date = session[:seek_date]
     end
-    logger.debug "DB8 session[:seek_date] was #{session[:seek_date]} @seek_date was #{@seek_date}"
+    # logger.debug "DB8 session[:seek_date] was #{session[:seek_date]} @seek_date was #{@seek_date}"
     @recap_pending = nil
     @recap_pending = true if @restaurant.recaps.where(rdate: Time.zone.at(@seek_date).midnight-1.day..Time.zone.at(@seek_date).midnight).all.size == 0
     @todays_recap = @restaurant.recaps.where(rdate: Time.zone.at(@seek_date).midnight-1.day..Time.zone.at(@seek_date).midnight).all.last if @restaurant.recaps.where(rdate: Time.zone.at(@seek_date).midnight-1.day..Time.zone.at(@seek_date).midnight).all.size > 0
+
+    sdate = Time.at(@seek_date).strftime("%Y-%m-%d")
+    unless @restaurant.specials_templates.where(sdate: sdate + ' 04:00').exists?
+      seek_date = session[:seek_date]
+      time_focus = Time.at(seek_date).strftime("%Y-%m-%d")
+      PrefillSpecialsJob.perform_later(time_focus,@restaurant.id)
+    end
   end
 
   # GET /restaurants/new
@@ -126,9 +132,19 @@ class RestaurantsController < ApplicationController
       InventoryCheck.create( restaurant_product_id: restaurant_product.id, quantity: 0, idate: Time.zone.at(session[:seek_date]) )
       redirect_to restaurant_path(@restaurant)+"/inventory/"+params[:seek_date]
     end
-    
+
   end
-  
+
+  def pre_fill_specials
+    restaurant_id = params[:id]
+    seek_date = session[:seek_date]
+    time_focus = Time.at(seek_date).strftime("%Y-%m-%d")
+
+    PrefillSpecialsJob.perform_later(time_focus,restaurant_id)
+
+    redirect_to restaurant_path restaurant_id
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant

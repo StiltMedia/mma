@@ -1,37 +1,54 @@
 <%= form_for(@special) do |f| %>
-  <% if @special.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@special.errors.count, "error") %> prohibited this special from being saved:</h2>
+  <div class="form-login form-alt">
+    <div class="row">
 
-      <ul>
-      <% @special.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <div class="col-md-12">
+        <div class="input-group">
+          <%= f.text_field :title, :class => "form-control", :placeholder => "TITLE" %>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="input-group">
+          Date: <%= f.date_field :sdate, :class => "form-control", :placeholder => "SELECT DATE" %>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="input-group">
+          <%= f.text_area :special, :class => "form-control", :placeholder => "WRITE..." %>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="input-group">
+          <%= f.file_field :image %>
+          <%= f.hidden_field :image_cache %>
+        </div>
+      </div>
     </div>
-  <% end %>
+  </div>
 
-  <div class="field">
-    <%= f.label :special %><br>
-    <%= f.text_area :special %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :picture %><br>
-    <%= f.text_field :picture %>
-  </div>
-  <div class="field">
-    <%= f.label :restaurant_id %><br>
-    <%= f.text_field :restaurant_id %>
-  </div>
-  <div class="field">
-    <%= f.label :sdate %><br>
-    <%= f.datetime_select :sdate %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <!-- log in button -->
+  <div class="button"> <div class="row">
+      <div class="col-xs-5 col-xs-offset-1">
+        <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+        <%= f.submit "SUBMIT", :class => "btn btn-dark full" %>
+      </div>
+      <div class="col-xs-5">
+        <a class="btn btn-dark full" href="javascript:window.history.back()">CANCEL</a>
+      </div>
+    </div>
   </div>
 <% end %>
+
+<div id="saving-3" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content text-center">
+      <br>
+      Saving ..
+      <br><br>
+    </div>
+  </div>
+</div>
+

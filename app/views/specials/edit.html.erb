@@ -1,6 +1,10 @@
-<h1>Editing Special</h1>
+<%= render "shared/header", h3_text: "BACK", back_link: restaurant_path(@restaurant) %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @special %> |
-<%= link_to 'Back', specials_path %>
+<section class="think-tank no-padding">
+  <div class="screen-inner thinktank-show-page">
+    <div class="container">
+      <%= render 'form' %>
+    </div>
+  </div>
+  <%= render "shared/footer_nav" %>
+</section>

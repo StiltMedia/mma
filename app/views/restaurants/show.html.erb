@@ -1,94 +1,90 @@
 <!-- main site -->
 <section class="think-tank no-padding">
 
-    <%= render "shared/header", h3_text: "#{@restaurant.name.upcase} RESTAURANT", back_link: "/pages/restaurants"  %>
+  <%= render "shared/header", h3_text: "#{@restaurant.name.upcase} RESTAURANT", back_link: "/pages/restaurants"  %>
 
-    <!-- header container -->
-    <div class="header-container">
-        <!-- header lower-->
-        <header class="header-lower no-padding">
+  <!-- header container -->
+  <div class="header-container">
+    <!-- header lower-->
+    <header class="header-lower no-padding">
 
-            <div class="date">
-                <a href="/restaurants/<%=@restaurant.id%>/seek_bwd"><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_calendar"></a>
-                <% logger.debug "DB8 3 @seek_date was #{@seek_date}" %>
-                <% logger.debug "DB8 3.2 session[:seek_date] was #{session[:seek_date]}" %>
-                <p><%= Time.at(@seek_date).strftime("%A, %b %d %Y") %></p>
-                <a href="/restaurants/<%=@restaurant.id%>/seek_fwd"><img src="<%=asset_path("icons/i_angle_right.png")%>" alt="icon_calendar"></a>
-            </div>
+      <div class="date">
+        <a href="/restaurants/<%=@restaurant.id%>/seek_bwd"><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_calendar"></a>
+        <% logger.debug "DB8 3 @seek_date was #{@seek_date}" %>
+        <% logger.debug "DB8 3.2 session[:seek_date] was #{session[:seek_date]}" %>
+        <p><%= Time.at(@seek_date).strftime("%A, %b %d %Y") %></p>
+        <a href="/restaurants/<%=@restaurant.id%>/seek_fwd"><img src="<%=asset_path("icons/i_angle_right.png")%>" alt="icon_calendar"></a>
+      </div>
 
-            <div class="calendar calendar-special">
-                <a href="/pages/calendar?sel_date=<%=session[:seek_date]%>&link_back=<%=URI.escape("/restaurants/#{@restaurant.id}")%>"><img src="<%=asset_path("icons/i_calendar_dark.png")%>" alt="icon_calendar"></a>
-            </div>
+      <div class="calendar calendar-special">
+        <a href="/pages/calendar?sel_date=<%=session[:seek_date]%>&link_back=<%=URI.escape("/restaurants/#{@restaurant.id}")%>"><img src="<%=asset_path("icons/i_calendar_dark.png")%>" alt="icon_calendar"></a>
+      </div>
+      <div class="add add-special">
+        <%= link_to image_tag('icons/i_plus.png'), new_restaurant_special_path(@restaurant) %>
+      </div>
 
-            <div class="add add-special">
-                <a href="/specials/new?rid=<%=@restaurant.id%>"><img src="<%=asset_path("icons/i_plus.png")%>" alt="icon_add"></a>
-            </div>
-
-        </header>
-        <!-- .header lower -->
-    </div>
-    <!-- .header container -->
+    </header>
+    <!-- .header lower -->
+  </div>
+  <!-- .header container -->
 
 
-    <!-- specials items -->
-    <div class="specials-items">
-        <% @restaurant.specials.where(sdate: Time.at(session[:seek_date]).midnight..(Time.at(session[:seek_date])+1.day).midnight  ).each do |special| %>
-        <a href="/specials/<%=special.id%>">
+  <!-- specials items -->
+  <div class="specials-items">
+    <% @restaurant.specials.where(sdate: Time.at(session[:seek_date]).midnight..(Time.at(session[:seek_date])+1.day).midnight  ).each do |special| %>
+      <%# <%= restaurant_specials_path %>
+      <a href="<%= restaurant_special_path(@restaurant, special)%>">
         <!-- special item -->
-        
-          <div class="special-item">
-              <div class="special-image">
-                  <img src="<%=url_for(:controller => "specials", :action => "show_picture", :id => special.id)%>" alt="special_image">
-              </div>
-              <div class="special-content">
-                  <h4><%= special.title %></h4>
-	  
-                  <p><%= truncate(special.special, :omission => "...", :length => 70) %></p>
-              </div>
+        <div class="special-item">
+          <div class="special-image">
+            <%= image_tag(special.image.profile.url) %>
           </div>
-        </a>
-        <!--.special item -->
-        <% end %>
-
-    </div>
-    <!-- .specials items -->
-
-
-    <!-- footer top -->
-    <footer class="footer-top">
-
-        <div class="restaurant-buttons">
-            <div class="restaurant-button <%= @recap_pending ? "active" : "" %>">
-                <% if @recap_pending %>
-                <a href="/recaps/new">
-                <% else %>
-                <a href="/recaps/<%=@todays_recap.id%>">
-                <% end %>
-                <img class="svg" src="<%=asset_path("icons/svg_inventory.svg")%>" alt="icon_recap">
-                <h3>RECAP</h3>
-                </a>
-            </div>
-            <div class="restaurant-button <%= @restaurant.inventory_filled?( Time.zone.at(@seek_date).strftime("%Y-%m-%d") ) ? "" : "active"%>">
-              <%= link_to(restaurant_path+"/inventory/"+Time.zone.at(@seek_date).strftime("%Y-%m-%d") ) do %>
-                <img class="svg" src="<%=asset_path("icons/svg_inventory.svg")%>" alt="icon_inventory">
-
-                <h3>INVENTORY</h3>
-	      <%end%>
-            </div>
+          <div class="special-content">
+            <h4><%= special.title %></h4>
+            <p><%= truncate(special.special, :omission => "...", :length => 70) %></p>
+          </div>
         </div>
+      </a>
+      <!--.special item -->
+    <% end %>
+  </div>
+  <!-- .specials items -->
 
-    </footer>
-    <!-- .footer top -->
+  <!-- footer top -->
+  <footer class="footer-top">
 
-    <%= render "shared/footer_nav" %>
+    <div class="restaurant-buttons">
+      <div class="restaurant-button <%= @recap_pending ? "active" : "" %>">
+        <% if @recap_pending %>
+          <a href="/recaps/new">
+          <% else %>
+            <a href="/recaps/<%=@todays_recap.id%>">
+            <% end %>
+            <img class="svg" src="<%=asset_path("icons/svg_inventory.svg")%>" alt="icon_recap">
+            <h3>RECAP</h3>
+            </a>
+      </div>
+      <div class="restaurant-button <%= @restaurant.inventory_filled?( Time.zone.at(@seek_date).strftime("%Y-%m-%d") ) ? "" : "active"%>">
+        <%= link_to(restaurant_path+"/inventory/"+Time.zone.at(@seek_date).strftime("%Y-%m-%d") ) do %>
+          <img class="svg" src="<%=asset_path("icons/svg_inventory.svg")%>" alt="icon_inventory">
+
+          <h3>INVENTORY</h3>
+        <%end%>
+      </div>
+    </div>
+
+  </footer>
+  <!-- .footer top -->
+
+  <%= render "shared/footer_nav" %>
 
 </section>
 <!-- .main site -->
 <%
-   Activity.create(activity: "hit /restaurants/#{@restaurant.id}",
-   atime: Time.now(),
-   username: (current_user.email rescue nil),
-   ip: request.remote_ip, 
-   browser_os: request.env['HTTP_USER_AGENT'],
-   geo_location: request.remote_ip )
-%>
+    Activity.create(activity: "hit /restaurants/#{@restaurant.id}",
+                    atime: Time.now(),
+                    username: (current_user.email rescue nil),
+                    ip: request.remote_ip,
+                    browser_os: request.env['HTTP_USER_AGENT'],
+                    geo_location: request.remote_ip )
+                  %>

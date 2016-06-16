@@ -32,9 +32,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'figaro'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  # gem 'byebug'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'launchy'
 end
 
 group :development do
@@ -43,6 +52,10 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 gem "pg"
@@ -59,6 +72,5 @@ gem "font-awesome-rails"
 gem 'rails_12factor', group: :production
 gem "rmagick"
 gem "haml"
-gem 'best_in_place', '~> 3.0.1'
 gem 'geocoder'
 gem 'rollbar', '~> 2.8.0'
