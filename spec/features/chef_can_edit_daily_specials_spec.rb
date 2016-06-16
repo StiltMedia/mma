@@ -1,26 +1,24 @@
 require 'rails_helper'
 
-# As a user
+# As a chef or admin
 # when I login
 # and visit a restarant page
-# Then I should be able to edit any of the predifined specials
+# Then I can edit any of the predifined specials
 
-RSpec.feature "User visits a restarant page" do
+RSpec.feature "Chef visits a restarant page" do
   scenario "they should be able to edit the specials" do
-    user = create(:user)
+    user = create(:user, :chef_role)
     restaurant = create(:restaurant)
-    special = create(:special)
 
 
     sign_in_with user
     select_restaurant restaurant
-    select_special special
+    click_on 'seek_fwd'
+    click_on 'seek_bwd'
+    click_on 'Oysters'
 
-    # click on special
-    # change information about special
-    # save special
-    # view updated changes
 
+    expect(page).to have_css '#edit-special'
   end
 
 
@@ -37,8 +35,6 @@ RSpec.feature "User visits a restarant page" do
   end
 
   def select_special special
-    save_and_open_page
     click_on special.title
-    save_and_open_page
   end
 end

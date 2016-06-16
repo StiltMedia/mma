@@ -1,7 +1,14 @@
 FactoryGirl.define do
   factory :user do
-    email 'test@user.comk'
+    email 'test@user.com'
     password 'password'
-    secret_code 'supersonic123'
+
+    trait :default do
+      chef 'false'
+    end
+
+    trait :chef_role do
+      chef 'true'
+    end
   end
 end
