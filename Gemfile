@@ -19,9 +19,7 @@ gem 'figaro'
 gem "pg"
 gem "slim"
 gem "migration_data"
-gem "pry"
 gem "devise"
-gem "faker"
 gem 'best_in_place', '~> 3.0.1'
 gem "activesupport-json_encoder"
 gem "font-awesome-rails"
@@ -37,6 +35,8 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'launchy'
+  gem 'pry'
+  gem 'faker'
 end
 
 group :development do
