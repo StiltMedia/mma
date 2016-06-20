@@ -3,7 +3,8 @@ class PrefillSpecialsJob < ActiveJob::Base
 
   def perform(day, restaurant_id)
 
-    specials_list = ['Oysters', 'Soup', 'Ceviche', 'Fish', 'Steak', 'Mix Grill']
+    specials_list = ['Oysters', 'Soup', 'Ceviche', 'Fish', 'Steak', 'Mix Grill',
+    'Wine of the Day']
 
     specials_list.each do |title|
       Special.create(
