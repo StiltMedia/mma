@@ -9,11 +9,11 @@
     <header class="header-lower no-padding">
 
       <div class="date">
-        <a href="/restaurants/<%=@restaurant.id%>/seek_bwd"><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_calendar"></a>
+        <a id='seek_bwd', href="/restaurants/<%=@restaurant.id%>/seek_bwd"><img src="<%=asset_path("icons/i_angle_left.png")%>" alt="icon_calendar"></a>
         <% logger.debug "DB8 3 @seek_date was #{@seek_date}" %>
         <% logger.debug "DB8 3.2 session[:seek_date] was #{session[:seek_date]}" %>
         <p><%= Time.at(@seek_date).strftime("%A, %b %d %Y") %></p>
-        <a href="/restaurants/<%=@restaurant.id%>/seek_fwd"><img src="<%=asset_path("icons/i_angle_right.png")%>" alt="icon_calendar"></a>
+        <a id='seek_fwd', href="/restaurants/<%=@restaurant.id%>/seek_fwd"><img src="<%=asset_path("icons/i_angle_right.png")%>" alt="icon_calendar"></a>
       </div>
 
       <div class="calendar calendar-special">

@@ -18,11 +18,17 @@
         <div class="post-image">
           <div class="row">
             <div class="col-md-12">
-              <a href="<%= edit_restaurant_special_path(@restaurant, @special) %>">
+              <% if current_user.chef? %>
+                <a href="<%= edit_restaurant_special_path(@restaurant, @special) %>">
+                  <% if @special.image %>
+                    <%= image_tag( @special.image.profile.url ) %>
+                  <% end %>
+                </a>
+              <% else %>
                 <% if @special.image %>
                   <%= image_tag( @special.image.profile.url ) %>
                 <% end %>
-              </a>
+              <% end %>
             </div>
           </div>
         </div>
@@ -33,17 +39,29 @@
 
           <div class="row">
             <div class="col-md-12">
-              <a href="<%= edit_restaurant_special_path(@restaurant, @special) %>">
-                <div class="post-title">
-                  <span class="author"><%= @special.title %></span>
-                </div>
-                <div class="post-meta">
-                  <h6><%= @special.restaurant.name %></h6>
-                </div>
-                <div class="post-content">
-                  <div><%= @special.special %></div>
-                </div>
+              <% if current_user.chef? %>
+                <a id='edit-special' href="<%= edit_restaurant_special_path(@restaurant, @special) %>">
+                  <div class="post-title">
+                    <span class="author"><%= @special.title %></span>
+                  </div>
+                  <div class="post-meta">
+                    <h6><%= @special.restaurant.name %></h6>
+                  </div>
+                  <div class="post-content">
+                    <div><%= @special.special %></div>
+                  </div>
               </a>
+            <% else %>
+              <div id='no-edit-special' class="post-title">
+                <span class="author"><%= @special.title %></span>
+              </div>
+              <div class="post-meta">
+                <h6><%= @special.restaurant.name %></h6>
+              </div>
+              <div class="post-content">
+                <div><%= @special.special %></div>
+              </div>
+            <% end %>
             </div>
           </div>
         </div>

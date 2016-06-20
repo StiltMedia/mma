@@ -17,6 +17,7 @@ class SpecialsController < ApplicationController
 
   def edit
     @restaurant = Restaurant.find(params[:restaurant_id])
+    authorize @special
     @special    = Special.find(params[:id])
   end
 
@@ -37,6 +38,7 @@ class SpecialsController < ApplicationController
 
   def update
     respond_to do |format|
+      authorize @special
       if @special.update(special_params)
         format.html { redirect_to restaurant_path params[:special][:restaurant_id] }
         format.json { render :show, status: :ok, location: @special }

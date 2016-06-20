@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :secret_code, on: :create, format: { with: /\Asupersonic123\z/, message: "not recognized" }
+  validates :secret_code, on: :create, format: { with: /\Asupersonic123||lightspeed123\z/, message: "not recognized" }
 end
